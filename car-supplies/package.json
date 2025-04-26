@@ -1,0 +1,44 @@
+{
+  "name": "car-supplies",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "PORT=8080 next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "flowbite-react patch"
+  },
+  "dependencies": {
+    "datatables.net": "^2.2.2",
+    "dropzone": "^6.0.0-beta.2",
+    "flowbite-react": "^0.11.7",
+    "jquery": "^3.7.1",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.488.0",
+    "next": "15.3.0",
+    "nouislider": "^15.8.1",
+    "preline": "^3.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-loading-skeleton": "^3.5.0",
+    "react-multi-carousel": "^2.8.6",
+    "react-toastify": "^11.0.5",
+    "swiper": "^11.2.6",
+    "vanilla-calendar-pro": "^3.0.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5"
+  }
+}
