@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Logo from '../../../public/logo_2.jpg';
 import { MapPinned, Phone } from 'lucide-react';
 import { toast } from 'react-toastify';
+
 const MegaNavbar = () => {
     const notify = () => toast('Wow so easy !');
 
@@ -18,6 +19,8 @@ const MegaNavbar = () => {
 
         if (!regex.test(value)) {
             setError('Invalid characters detected.');
+            console.log(error);
+            
             notify();
         } else {
             setError('');
