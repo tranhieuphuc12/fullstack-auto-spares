@@ -14,7 +14,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
 
   const [product, setProduct] = useState<Product>()
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
   const [mainImage, setMainImage] = useState<string | null>();
   const apiBase = process.env.NEXT_PUBLIC_API_BASE;
 
@@ -29,7 +29,8 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
         setProduct(data);
         setMainImage(data.images[0]);
       } catch (error) {
-        setError("Failed to load product" + error);
+        console.error("Error fetching product:", error);
+        // setError("Failed to load product" + error);
       } finally {
         setLoading(false);
       }
