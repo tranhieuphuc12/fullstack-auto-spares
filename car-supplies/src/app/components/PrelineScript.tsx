@@ -1,5 +1,11 @@
 'use client';
 
+declare global {
+  interface Window {
+    noUiSlider: typeof noUiSlider;
+  }
+}
+
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
