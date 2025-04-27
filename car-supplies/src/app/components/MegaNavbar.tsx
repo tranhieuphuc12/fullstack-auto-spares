@@ -10,7 +10,7 @@ const MegaNavbar = () => {
     const notify = () => toast('Wow so easy !');
 
     const [search, setSearch] = React.useState<string>('');
-    const [error, setError] = React.useState<string>('');
+    // const [error, setError] = React.useState<string>('');
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
 
@@ -18,18 +18,18 @@ const MegaNavbar = () => {
         const regex = /^[a-zA-Z0-9\s\-_,.]*$/;
 
         if (!regex.test(value)) {
-            setError('Invalid characters detected.');
-            console.log(error);
+            // setError('Invalid characters detected.');
+            // console.log(error);
             
             notify();
         } else {
-            setError('');
+            // setError('');
             setSearch(value);
         }
     };
     const handleSearch = () => {
         if (search.trim() === '') {
-            setError('Please enter a search term.');
+            // setError('Please enter a search term.');
             notify();
         } else {
             // Perform search action here
