@@ -1,0 +1,336 @@
+[{
+  "_id": {
+    "$oid": "680f3a218db202dda47b0f4c"
+  },
+  "productId": "A2058350147",
+  "name": "Lọc gió máy lạnh trong (All GLC)",
+  "images": [],
+  "price": 250000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "OEM",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0eef"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f65"
+  },
+  "productId": "A2058350147",
+  "name": "Lọc gió máy lạnh trong (All GLC)",
+  "images": [],
+  "price": 250000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "OEM",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0eef"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f66"
+  },
+  "productId": "A1668300218",
+  "name": "Lọc gió máy lạnh ngoài (All GLC)",
+  "images": [],
+  "price": 190000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "OEM",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0eef"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f67"
+  },
+  "productId": "A2740940104",
+  "name": "Lọc động cơ ( <= 2017)",
+  "images": [],
+  "price": 250000,
+  "stock": 5,
+  "description": "Lọc gió động cơ là bộ phận quan trọng trong hệ thống động cơ của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "OEM",
+  "categoryId": "680f2b908db202dda47b0ee5",
+  "carId": "680f2f718db202dda47b0eef"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f68"
+  },
+  "productId": "A2701800109",
+  "name": "Lọc nhớt (All GLC)",
+  "images": [],
+  "price": 320000,
+  "stock": 5,
+  "description": "Lọc nhớt là bộ phận quan trọng trong hệ thống bôi trơn của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong dầu nhớt trước khi vào buồng đốt. Việc thay thế lọc nhớt định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "MERCEDES",
+  "categoryId": "680f2b908db202dda47b0ee7",
+  "carId": "680f2f718db202dda47b0eef"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f69"
+  },
+  "productId": "A2640940100",
+  "name": "Lọc động cơ",
+  "images": [],
+  "price": 290000,
+  "stock": 5,
+  "description": "Lọc gió động cơ là bộ phận quan trọng trong hệ thống động cơ của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "OEM",
+  "categoryId": "680f2b908db202dda47b0ee5",
+  "carId": "680f33738db202dda47b0f02"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f6a"
+  },
+  "productId": "11427953129",
+  "name": "Lọc nhớt",
+  "images": [],
+  "price": 290000,
+  "stock": 5,
+  "description": "Lọc nhớt là bộ phận quan trọng trong hệ thống bôi trơn của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong dầu nhớt trước khi vào buồng đốt. Việc thay thế lọc nhớt định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee7",
+  "carId": "680f2f718db202dda47b0ef1"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f6b"
+  },
+  "productId": "64316804939",
+  "name": "Lọc gió máy lạnh",
+  "images": [],
+  "price": 250000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0ef1"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f6c"
+  },
+  "productId": "64119248294",
+  "name": "Lọc gió máy lạnh",
+  "images": [],
+  "price": 345000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0ef1"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f6d"
+  },
+  "productId": "13717571355",
+  "name": "Lọc gió động cơ",
+  "images": [],
+  "price": 250000,
+  "stock": 5,
+  "description": "Lọc gió động cơ là bộ phận quan trọng trong hệ thống động cơ của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee5",
+  "carId": "680f2f718db202dda47b0ef1"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f6e"
+  },
+  "productId": "11427953129",
+  "name": "Lọc nhớt",
+  "images": [],
+  "price": 290000,
+  "stock": 5,
+  "description": "Lọc nhớt là bộ phận quan trọng trong hệ thống bôi trơn của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong dầu nhớt trước khi vào buồng đốt. Việc thay thế lọc nhớt định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee7",
+  "carId": "680f2f718db202dda47b0ef2"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f6f"
+  },
+  "productId": "13717548888",
+  "name": "Lọc gió động cơ",
+  "images": [],
+  "price": 275000,
+  "stock": 5,
+  "description": "Lọc gió động cơ là bộ phận quan trọng trong hệ thống động cơ của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee5",
+  "carId": "680f2f718db202dda47b0ef2"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f70"
+  },
+  "productId": "64319194098",
+  "name": "Lọc gió máy lạnh",
+  "images": [],
+  "price": 220000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0ef2"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f71"
+  },
+  "productId": "64119248294",
+  "name": "Lọc gió máy lạnh",
+  "images": [],
+  "price": 345000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0ef2"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f72"
+  },
+  "productId": "11427953129",
+  "name": "Lọc nhớt",
+  "images": [],
+  "price": 290000,
+  "stock": 5,
+  "description": "Lọc nhớt là bộ phận quan trọng trong hệ thống bôi trơn của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong dầu nhớt trước khi vào buồng đốt. Việc thay thế lọc nhớt định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee7",
+  "carId": "680f2f718db202dda47b0ef3"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f73"
+  },
+  "productId": "13717601868",
+  "name": "Lọc gió động cơ",
+  "images": [],
+  "price": 275000,
+  "stock": 5,
+  "description": "Lọc gió động cơ là bộ phận quan trọng trong hệ thống động cơ của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee5",
+  "carId": "680f2f718db202dda47b0ef3"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f74"
+  },
+  "productId": "64119237159",
+  "name": "Lọc gió máy lạnh",
+  "images": [],
+  "price": 345000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0ef3"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f75"
+  },
+  "productId": "64319312318",
+  "name": "Lọc gió máy lạnh",
+  "images": [],
+  "price": 345000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0ef3"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f76"
+  },
+  "productId": "1142857211",
+  "name": "Lọc nhớt",
+  "images": [],
+  "price": 250000,
+  "stock": 5,
+  "description": "Lọc nhớt là bộ phận quan trọng trong hệ thống bôi trơn của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong dầu nhớt trước khi vào buồng đốt. Việc thay thế lọc nhớt định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee7",
+  "carId": "680f2f718db202dda47b0ef4"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f77"
+  },
+  "productId": "1371857043",
+  "name": "Lọc gió động cơ",
+  "images": [],
+  "price": 275000,
+  "stock": 5,
+  "description": "Lọc gió động cơ là bộ phận quan trọng trong hệ thống động cơ của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee5",
+  "carId": "680f2f718db202dda47b0ef4"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f78"
+  },
+  "productId": "64119237159",
+  "name": "Lọc gió máy lạnh",
+  "images": [],
+  "price": 275000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0ef4"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f79"
+  },
+  "productId": "11427953125",
+  "name": "Lọc nhớt",
+  "images": [],
+  "price": 250000,
+  "stock": 5,
+  "description": "Lọc nhớt là bộ phận quan trọng trong hệ thống bôi trơn của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong dầu nhớt trước khi vào buồng đốt. Việc thay thế lọc nhớt định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee7",
+  "carId": "680f2f718db202dda47b0ef5"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f7a"
+  },
+  "productId": "13717582908",
+  "name": "Lọc gió động cơ",
+  "images": [],
+  "price": 250000,
+  "stock": 5,
+  "description": "Lọc gió động cơ là bộ phận quan trọng trong hệ thống động cơ của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee5",
+  "carId": "680f2f718db202dda47b0ef5"
+},
+{
+  "_id": {
+    "$oid": "680f3a4b8db202dda47b0f7b"
+  },
+  "productId": "64119272642",
+  "name": "Lọc gió máy lạnh",
+  "images": [],
+  "price": 275000,
+  "stock": 5,
+  "description": "Lọc gió máy lạnh là bộ phận quan trọng trong hệ thống điều hòa không khí của xe ô tô, giúp lọc sạch bụi bẩn và tạp chất trong không khí trước khi vào buồng đốt. Việc thay thế lọc gió định kỳ giúp tăng hiệu suất động cơ, tiết kiệm nhiên liệu và giảm khí thải.",
+  "brand": "BMW",
+  "categoryId": "680f2b908db202dda47b0ee6",
+  "carId": "680f2f718db202dda47b0ef5"
+}]

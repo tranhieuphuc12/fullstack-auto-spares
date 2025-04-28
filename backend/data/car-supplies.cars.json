@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "680f2f718db202dda47b0eef"
+  },
+  "brand": "Mercedes-Benz",
+  "model": "GLC 300 4MATIC",
+  "year": 2017
+},
+{
+  "_id": {
+    "$oid": "680f2f718db202dda47b0ef1"
+  },
+  "brand": "BMW",
+  "model": "X6",
+  "year": 2008
+},
+{
+  "_id": {
+    "$oid": "680f2f718db202dda47b0ef2"
+  },
+  "brand": "BMW",
+  "model": "X5",
+  "year": 2008
+},
+{
+  "_id": {
+    "$oid": "680f2f718db202dda47b0ef3"
+  },
+  "brand": "BMW",
+  "model": "X4",
+  "year": 2014
+},
+{
+  "_id": {
+    "$oid": "680f2f718db202dda47b0ef4"
+  },
+  "brand": "BMW",
+  "model": "X3",
+  "year": 2015
+},
+{
+  "_id": {
+    "$oid": "680f2f718db202dda47b0ef5"
+  },
+  "brand": "BMW",
+  "model": "520",
+  "year": 2014
+},
+{
+  "_id": {
+    "$oid": "680f33738db202dda47b0f02"
+  },
+  "brand": "Mercedes-Benz",
+  "model": "GLC 300 4MATIC",
+  "year": 2018
+}]
