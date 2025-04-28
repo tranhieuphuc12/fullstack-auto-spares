@@ -3,19 +3,67 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
 
+// GET products by search term with pagination
+router.get('/search', async (req, res) => {
+  const searchTerm = req.query.query;
+  const page = parseInt(req.query.page) || 2;
+  const limit = parseInt(req.query.limit) || 5;
+  const skip = (page - 1) * limit;
+
+  // Check for invalid characters (e.g., special characters)
+  const invalidCharacters = /[!@#$%^&*()?":{}|<>]/g;
+
+  if (invalidCharacters.test(searchTerm)) {
+    return res.status(401).json({ error: 'Search term contains invalid characters!' });
+  }
+
+  if (!searchTerm) {
+    return res.status(400).json({ error: 'Search term is required!' });
+  }
+
+  try {
+    const products = await Product.find({
+      $or: [
+        { name: { $regex: searchTerm, $options: 'i' } }, // Case-insensitive search
+        { description: { $regex: searchTerm, $options: 'i' } }
+      ]
+    }).skip(skip).limit(limit);
+    const totalProducts = await Product.countDocuments({
+      $or: [
+        { name: { $regex: searchTerm, $options: 'i' } },
+        { description: { $regex: searchTerm, $options: 'i' } }
+      ]
+    });
+
+    if (products.length === 0) {
+      return res.status(404).json({ error: 'No products found' });
+    }
+
+    res.status(200).json({
+      products,
+      totalPages: Math.ceil(totalProducts / limit),
+      totalItems: totalProducts,
+
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch products' });
+  } finally {
+    console.log(`GET /products/search?q=${searchTerm}`);
+  }
+});
 
 // GET products with pagination
 router.get('/products', async (req, res) => {
   const page = parseInt(req.query.page) || 2;
-  const limit = parseInt(req.query.limit) || 5; 
+  const limit = parseInt(req.query.limit) || 5;
   const skip = (page - 1) * limit;
-  
+
   try {
     const products = await Product.find().skip(skip).limit(limit);
     const totalProducts = await Product.countDocuments();
     res.status(200).json({
       products,
-      totalPages: Math.ceil(totalProducts / limit),      
+      totalPages: Math.ceil(totalProducts / limit),
       totalItems: totalProducts,
 
     });
@@ -29,13 +77,13 @@ router.get('/products', async (req, res) => {
 
 // GET a single product by ID
 router.get('/products/:id', async (req, res) => {
-  const productId = req.params.id; 
+  const productId = req.params.id;
 
   if (!productId) {
     return res.status(400).json({ error: 'Product ID is required' });
   }
 
-  
+
   if (isNaN(productId)) {
     return res.status(400).json({ error: 'Product ID must be a number' });
   }
@@ -48,7 +96,7 @@ router.get('/products/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch product' });
   } finally {
     console.log(`productId: ${productId} got request`);
-    
+
   }
 });
 

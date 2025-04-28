@@ -6,35 +6,47 @@ import Logo from '../../../public/logo_2.jpg';
 import { MapPinned, Phone } from 'lucide-react';
 import { toast } from 'react-toastify';
 
+
+
+
 const MegaNavbar = () => {
-    const notify = () => toast('Wow so easy !');
+    const [error, setError] = React.useState('');
+    const [query, setQuery] = React.useState('');
 
-    const [search, setSearch] = React.useState<string>('');
-    // const [error, setError] = React.useState<string>('');
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+    const notify = () => toast.error(error || 'Invalid characters detected', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",        
+    });
 
-        // Allow only letters, numbers, spaces, and basic punctuation
-        const regex = /^[a-zA-Z0-9\s\-_,.]*$/;
 
-        if (!regex.test(value)) {
-            // setError('Invalid characters detected.');
-            // console.log(error);
-            
-            notify();
-        } else {
-            // setError('');
-            setSearch(value);
-        }
-    };
+
     const handleSearch = () => {
-        if (search.trim() === '') {
-            // setError('Please enter a search term.');
+        // Check for empty query
+        const trimmedQuery = query.trim();
+        
+        // Check for invalid characters (e.g., special characters)
+        const invalidCharacters = /[!@#$%^&*()?":{}|<>]/g;
+
+        if (trimmedQuery === '') {
+            setError('Please enter a search term.');
             notify();
-        } else {
-            // Perform search action here
-            console.log('Searching for:', search);
-            setSearch('');
+            
+        }else if (invalidCharacters.test(trimmedQuery)) {
+            setError('Invalid characters detected. Please use alphanumeric characters only.');
+            notify();
+        }
+         else {
+            // Navigate to the search results page
+            window.location.href = `/search?query=${trimmedQuery}`;
+
+            setError('');            
+            setQuery('');   
         }
     };
 
@@ -118,13 +130,13 @@ const MegaNavbar = () => {
                                     <div className="relative mt-3 lg:mt-0 lg:ms-10 flex items-center gap-4 sm:pb-2 lg:pb-0">
                                         <input
                                             type="text"
-                                            value={search}
-                                            onChange={handleInputChange}
+                                            value={query}                                onChange={(e) => setQuery(e.target.value)}        
                                             onKeyDown={(e) => {
                                                 if (e.key === 'Enter') {
                                                     handleSearch();
                                                 }
                                             }}
+                                           
                                             className="w-full px-4 py-2 pl-10 text-sm border border-gray-300 rounded-lg bg-white text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                             placeholder="Search for products..."
                                         />
@@ -143,11 +155,11 @@ const MegaNavbar = () => {
 
                                     <div className="flex-col hidden md:flex lg:flex gap-2 ps-10 font-semibold">
                                         <div className="flex items-center gap-2">
-                                            <Phone color='#606060'/>
+                                            <Phone color='#606060' />
                                             <span className="text-red-500 pt-2">01 234 567 89</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <MapPinned color='#606060'/>
+                                            <MapPinned color='#606060' />
                                             <span className="text-red-500 pt-2">Show Room</span>
                                         </div>
                                     </div>

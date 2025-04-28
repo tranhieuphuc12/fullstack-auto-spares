@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Slider from "@/app/components/Slider";
-import ProductList from "@/app/components/ProductList";
+import ProductList from "@/app/components/ProductsList";
 import BrandCarousel from "@/app/components/BrandsCarousel";
 import BrandNSX from '../../public/brands/nsx-1.webp';
 import BrandCH from '../../public/brands/ch-1.webp';
@@ -34,14 +34,15 @@ export default function Home() {
     { name: 'Brand8', src: BrandCH },
   ];
   
-  
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
+  const API_PRODUCTS = `${API_BASE}/api/products?`; // API endpoint for products must have the "?" at the end
 
   return (
     <div className="mx-auto">
       
       <Slider />
       
-      <ProductList />
+      <ProductList API={API_PRODUCTS}/>
 
       <BrandCarousel brands={brandsNSX} title="Phụ tùng nhà sản xuất" />
 
