@@ -11,6 +11,7 @@ import 'swiper/css/effect-fade';
 import Image from 'next/image';
 import type { Swiper as SwiperType } from 'swiper';
 
+
 const Slider = () => {
 
     const swiperRef = useRef<SwiperType | null>(null);
@@ -25,6 +26,8 @@ const Slider = () => {
         { name: 'Brand 3', src: Slider1 },
         { name: 'Brand 4', src: Slider2 },        
     ]
+    
+    
 
     return (
         <div className="py-8 bg-white">            

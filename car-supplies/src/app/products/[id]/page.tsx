@@ -85,7 +85,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
           <div>
             <div className="border border-gray-300 rounded-lg overflow-hidden p-2 mb-5">
               <Image
-                src={mainImage || "/placeholder-image.png"}
+                src={`/products/${mainImage}` || "/placeholder-image.png"}
                 alt="Product"
                 width={600}
                 height={400}
@@ -94,7 +94,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
             </div>
 
             <ProductImagesCarousel images={product?.images || []} onImageClick={handleImageClick} />
-            
+
 
 
           </div>
@@ -103,17 +103,19 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
           <div className="space-y-3">
             <h1 className="text-2xl font-semibold text-gray-800">{product?.name}</h1>
             <p className="text-gray-600">
-              Mã sản phẩm: <strong>{product?.id}</strong>
+              Tên sản phẩm: <strong>{product?.name}</strong>
             </p>
             <p className="text-gray-600">
-              {/* Thương hiệu: <strong>{product?.brand}</strong> */}
+              Mã sản phẩm: <strong>{product?.productId}</strong>
             </p>
             <p className="text-gray-600">
-              {/* Xuất xứ: <strong>{product?.from}</strong> */}
+              Thương hiệu: <strong>{product?.brand}</strong>
             </p>
-            <p className="text-lg text-red-600 font-bold">Giá: {product?.price} VND</p>
-            <p className="text-sm text-gray-500">
-              Lượt xem: <span className="text-gray-700">359</span>
+            <p className="text-gray-600">
+              Số lượng: <strong>{product?.stock}</strong>
+            </p>
+            <p className="text-lg text-red-600 font-bold">
+              Giá: {product?.price ? new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price) : 'N/A'}
             </p>
           </div>
         </div>
@@ -128,7 +130,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
           {/* Optional large image */}
           <div className="mt-6">
             <Image
-              src={product?.thumbnail || "/placeholder-image.png"}
+              src={`/products/${mainImage}` || "/placeholder-image.png"}
               alt="Chi tiết sản phẩm"
               width={800}
               height={500}

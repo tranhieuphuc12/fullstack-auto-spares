@@ -83,12 +83,9 @@ router.get('/products/:id', async (req, res) => {
   }
 
 
-  if (isNaN(productId)) {
-    return res.status(400).json({ error: 'Product ID must be a number' });
-  }
 
   try {
-    const product = await Product.findOne({ id: productId });
+    const product = await Product.findOne({ _id: productId });
     if (!product) return res.status(404).json({ error: 'Product not found' });
     res.json(product);
   } catch (err) {

@@ -78,7 +78,7 @@ const ProductsList = ({API} : {API:string}) => {
                     )}
 
                     {!loading && products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                        <ProductCard key={product._id} product={product} />
                     ))}
                 </div>
                 <Pagination

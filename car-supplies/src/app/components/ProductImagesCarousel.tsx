@@ -54,7 +54,7 @@ const ProductImagesCarousel = ({ images, onImageClick }: { images: string[], onI
                             onMouseEnter={() => handleImageClick(image)}
                         >
                             <Image
-                                src={image}
+                                src={`/products/${image}` || "/placeholder-image.png"}
                                 alt={image}
                                 width={150}
                                 height={75}
