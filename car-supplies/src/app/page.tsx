@@ -8,7 +8,7 @@ import GroupFixedButtons from "./components/GroupFixedButtons";
 
 export default function Home() {
 
-// unnecessary import
+
   
   const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
   const API_PRODUCTS = `${API_BASE}/api/products?`; 

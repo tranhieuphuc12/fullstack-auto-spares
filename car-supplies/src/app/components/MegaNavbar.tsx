@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '../../../public/logo_2.jpg';
+import Logo from '../../../public/logo.png';
 import { MapPinned, Phone } from 'lucide-react';
 import { toast } from 'react-toastify';
 import Category from '../interfaces/ICategory';
@@ -14,7 +14,8 @@ const MegaNavbar = () => {
     const [query, setQuery] = useState('');
     const [categories, setCategories] = useState<Category[]>([]);
     const apiBase = process.env.NEXT_PUBLIC_API_BASE;
-    const notify = () => toast.error(error || 'Invalid characters detected', {
+    const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER;
+    const notify = () => toast.error(error || 'Ký tự không hợp lệ', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -42,11 +43,11 @@ const MegaNavbar = () => {
         const invalidCharacters = /[!@#$%^&*()?":{}|<>]/g;
 
         if (trimmedQuery === '') {
-            setError('Please enter a search term.');
+            setError('Hãy nhập từ khóa tìm kiếm');
             notify();
 
         } else if (invalidCharacters.test(trimmedQuery)) {
-            setError('Invalid characters detected. Please use alphanumeric characters only.');
+            setError('Ký tự không hợp lệ');
             notify();
         }
         else {
@@ -154,7 +155,7 @@ const MegaNavbar = () => {
                                             md:border-none">
                                                 <div className="flex flex-col">
                                                     {categories.map((category: Category) => (
-                                                        <Link key={category._id} className="flex items-center gap-x-3.5 py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100
+                                                        <Link key={category._id} className="flex items-center gap-x-3.5 py-2 px-3 font-semibold text-sm text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400
                                                     border-b border-gray-200"
                                                             href={`/products/categoryId/${category._id}`}>
                                                             {category.name}
@@ -175,7 +176,7 @@ const MegaNavbar = () => {
                                             }}
 
                                             className="w-full px-4 py-2 pl-10 text-sm border border-gray-300 rounded-lg bg-white text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                            placeholder="Search for products..."
+                                            placeholder="Tìm kiếm"
                                         />
                                         <button
                                             type="button"
@@ -193,7 +194,7 @@ const MegaNavbar = () => {
                                     <div className="flex-col hidden md:flex lg:flex gap-2 ps-10 font-semibold sm:text-xs">
                                         <div className="flex items-center gap-2">
                                             <Phone color='#606060' />
-                                            <span className="text-red-500 pt-2">01 234 567 89</span>
+                                            <span className="text-red-500 pt-2">{PHONE_NUMBER}</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <MapPinned color='#606060' />

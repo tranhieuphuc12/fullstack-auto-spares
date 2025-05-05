@@ -33,8 +33,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={inter.className}>
       <body className="antialiased">
         
-        <Header />
-        {/* <Navbar /> */}
+        
+        
         <MegaNavbar />
         {children}
         <Map />

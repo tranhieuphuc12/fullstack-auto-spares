@@ -5,9 +5,10 @@ import Link from 'next/link';
 import ZaloIcon from '../../../public/Icon_of_Zalo.svg.png'
 
 const ZaloButton = () => {
+    const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER;
     return (
         <Link
-            href="https://zalo.me/0338867216"
+            href={`https://zalo.me/${PHONE_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-20 right-4 sm:bottom-16 sm:right-6 md:bottom-35 md:right-6 z-50"

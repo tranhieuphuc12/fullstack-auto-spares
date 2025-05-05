@@ -4,9 +4,10 @@ import Link from 'next/link';
 import MessengerIcon from '../../../public/messenger_icon.png';
 
 const MessengerButton = () => {
+    const FACEBOOK_LINK = process.env.NEXT_PUBLIC_FACEBOOK;
   return (
     <Link
-      href="https://www.facebook.com/DaiTranDev"
+      href={FACEBOOK_LINK || ''}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-35 right-4 sm:bottom-32 sm:right-6 md:bottom-55 md:right-6 z-50"

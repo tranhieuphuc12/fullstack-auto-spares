@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { PhoneCall } from 'lucide-react';
 
 const PhoneCallButton = () => {
+  const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER;
   return (
     <Link
-      href="tel:+1234567890"
+      href={`tel:+${PHONE_NUMBER}`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-50 right-4 sm:bottom-48 sm:right-6 md:bottom-75 md:right-6 z-50"
