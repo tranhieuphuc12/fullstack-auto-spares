@@ -1,0 +1,132 @@
+[
+    {
+        "name": "Honda",
+        "logo": "ch-1.webp",
+        "type": "ch"
+    },
+    {
+        "name": "Mazda",
+        "logo": "ch-2.webp",
+        "type": "ch"
+    },
+    {
+        "name": "Hyundai",
+        "logo": "ch-3.webp",
+        "type": "ch"
+    },
+    {
+        "name": "Kia",
+        "logo": "ch-4.webp",
+        "type": "ch"
+    },
+    {
+        "name": "Ssangyong",
+        "logo": "ch-5.webp",
+        "type": "ch"
+    },
+    {
+        "name": "Renault-Samsung",
+        "logo": "ch-6.webp",
+        "type": "ch"
+    },
+    {
+        "name": "Genuine-Parts",
+        "logo": "ch-7.webp",
+        "type": "ch"
+    },
+    {
+        "name": "VinFast",
+        "logo": "ch-8.webp",
+        "type": "ch"
+    },
+    {
+        "name": "Depo",
+        "logo": "nsx-1.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "Luk",
+        "logo": "nsx-2.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "PHG",
+        "logo": "nsx-3.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "TYC",
+        "logo": "nsx-4.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "Luke",
+        "logo": "nsx-5.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "INA",
+        "logo": "nsx-6.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "FAG",
+        "logo": "nsx-7.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "TruPower",
+        "logo": "nsx-8.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "CTR",
+        "logo": "nsx-9.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "Mando",
+        "logo": "nsx-10.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "PHG",
+        "logo": "nsx-11.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "IWin",
+        "logo": "nsx-12.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "PHC",
+        "logo": "nsx-13.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "SECO",
+        "logo": "nsx-14.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "HIPAS",
+        "logo": "nsx-15.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "HANON",
+        "logo": "nsx-16.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "Doowon",
+        "logo": "nsx-17.webp",
+        "type": "nsx"
+    },
+    {
+        "name": "Tongyang",
+        "logo": "nsx-18.webp",
+        "type": "nsx"
+    }
+]

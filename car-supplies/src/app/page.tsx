@@ -11,31 +11,11 @@ import GroupFixedButtons from "./components/GroupFixedButtons";
 
 export default function Home() {
 
-  
-  //Mock data 
-  const brandsNSX: Brand[] = [
-    { name: 'Brand1', src: BrandNSX },
-    { name: 'Brand2', src: BrandNSX },
-    { name: 'Brand3', src: BrandNSX },
-    { name: 'Brand4', src: BrandNSX },
-    { name: 'Brand5', src: BrandNSX },
-    { name: 'Brand6', src: BrandNSX },
-    { name: 'Brand7', src: BrandNSX },
-    { name: 'Brand8', src: BrandNSX },
-  ];
-  const brandsCH: Brand[] = [
-    { name: 'Brand1', src: BrandCH },
-    { name: 'Brand2', src: BrandCH },
-    { name: 'Brand3', src: BrandCH },
-    { name: 'Brand4', src: BrandCH },
-    { name: 'Brand5', src: BrandCH },
-    { name: 'Brand6', src: BrandCH },
-    { name: 'Brand7', src: BrandCH },
-    { name: 'Brand8', src: BrandCH },
-  ];
+
   
   const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
-  const API_PRODUCTS = `${API_BASE}/api/products?`; // API endpoint for products must have the "?" at the end
+  const API_PRODUCTS = `${API_BASE}/api/products?`; 
+  
 
   return (
     <div className="mx-auto">
@@ -44,9 +24,9 @@ export default function Home() {
       
       <ProductList API={API_PRODUCTS}/>
 
-      <BrandCarousel brands={brandsNSX} title="Phụ tùng nhà sản xuất" />
+      <BrandCarousel BASE_URL={API_BASE} type="nsx" title="Phụ tùng nhà sản xuất" />
 
-      <BrandCarousel brands={brandsCH} title="Phụ tùng chính hãng" />
+      <BrandCarousel BASE_URL={API_BASE} type="ch" title="Phụ tùng chính hãng" />
 
       <GroupFixedButtons />
     </div>

@@ -1,7 +1,7 @@
-import Brand from '@/app/interfaces/IBrand';
 
-interface BrandCarouselProps {
-  brands: Brand[];
+interface BrandCarouselProps {  
+  BASE_URL?: string;
+  type: string;
   title?: string;
 }
 export default BrandCarouselProps;

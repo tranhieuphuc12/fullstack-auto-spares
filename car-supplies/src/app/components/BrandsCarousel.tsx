@@ -1,5 +1,5 @@
 'use client';
-import { useRef } from 'react';
+import { useEffect, useRef,useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -8,14 +8,31 @@ import 'swiper/css/effect-fade';
 import Image from 'next/image';
 import type { Swiper as SwiperType } from 'swiper';
 import BrandCarouselProps from '@/app/interfaces/IBrandCarouselProps';
+import Brand from '@/app/interfaces/IBrand';
 
 
-const BrandCarousel = ({ brands, title }: BrandCarouselProps) => {
+const BrandCarousel = ({BASE_URL, type, title }: BrandCarouselProps) => {
+  const [brands, setBrands] = useState<Brand[]>([]);
   const swiperRef = useRef<SwiperType | null>(null);
-
   const handleClick = () => {
     swiperRef.current?.slideNext();
   };
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/api/brands/${type}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setBrands(data);
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching brands:', error);
+      }
+    }
+    fetchBrands();
+  }, []);
 
   return (
     <div className="py-8 bg-white">
@@ -37,13 +54,13 @@ const BrandCarousel = ({ brands, title }: BrandCarouselProps) => {
         className="max-w-7xl mx-auto "
       >
         {brands.map((brand) => (
-          <SwiperSlide key={brand.name}>
+          <SwiperSlide key={brand._id}>
             <div
               className="flex justify-center items-center cursor-pointer"
               onClick={handleClick}
             >
               <Image
-                src={brand.src}
+                src={`/brands/${brand.logo}`}
                 alt={brand.name}
                 width={120}
                 height={60}

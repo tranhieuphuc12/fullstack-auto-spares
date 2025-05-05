@@ -62,8 +62,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange, totalItems }: IPagi
             {/* Pagination Wrapper */}
             <div className="grid justify-center sm:flex sm:justify-center sm:items-center gap-2 mt-10">
                 {/* Pagination Info */}
-                <div className="text-sm text-gray-600">
-                    Total Items: <span className="font-medium">{totalItems}</span>
+                <div className="text-sm text-gray-600 ">
+                    Tổng sản phẩm: <span className="font-bold">{totalItems}</span>
                 </div>
                 {/* Pagination */}
                 <nav className="flex justify-end items-center -space-x-px" aria-label="Pagination">

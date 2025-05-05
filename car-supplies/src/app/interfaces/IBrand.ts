@@ -1,6 +1,8 @@
-import { StaticImageData } from "next/image";
+
 interface Brand {
+    _id: string;
     name: string;
-    src: StaticImageData;
+    logo: string;
+    type: string;
 };
 export default Brand;
