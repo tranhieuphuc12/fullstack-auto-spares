@@ -3,15 +3,12 @@ import React from "react";
 import Slider from "@/app/components/Slider";
 import ProductList from "@/app/components/ProductsList";
 import BrandCarousel from "@/app/components/BrandsCarousel";
-import BrandNSX from '../../public/brands/nsx-1.webp';
-import BrandCH from '../../public/brands/ch-1.webp';
-import type Brand from '@/app/interfaces/IBrand';
 import GroupFixedButtons from "./components/GroupFixedButtons";
  
 
 export default function Home() {
 
-
+// unnecessary import
   
   const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
   const API_PRODUCTS = `${API_BASE}/api/products?`; 
