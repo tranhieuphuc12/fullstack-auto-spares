@@ -1,18 +1,19 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../../public/logo_2.jpg';
 import { MapPinned, Phone } from 'lucide-react';
 import { toast } from 'react-toastify';
-
-
+import Category from '../interfaces/ICategory';
 
 
 const MegaNavbar = () => {
-    const [error, setError] = React.useState('');
-    const [query, setQuery] = React.useState('');
 
+    const [error, setError] = useState('');
+    const [query, setQuery] = useState('');
+    const [categories, setCategories] = useState<Category[]>([]);
+    const apiBase = process.env.NEXT_PUBLIC_API_BASE;
     const notify = () => toast.error(error || 'Invalid characters detected', {
         position: "top-right",
         autoClose: 5000,
@@ -21,34 +22,60 @@ const MegaNavbar = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",        
+        theme: "light",
     });
 
-
+    const closeMobileMenu = () => {
+        const overlayEl = document.querySelector('#hs-navbar-to-overlay');
+        // Close with Preline's API if available
+        if (window.HSOverlay && overlayEl) {
+            const instance = window.HSOverlay.getInstance(overlayEl as HTMLElement);
+            instance?.close();
+        }
+    }
 
     const handleSearch = () => {
         // Check for empty query
         const trimmedQuery = query.trim();
-        
+
         // Check for invalid characters (e.g., special characters)
         const invalidCharacters = /[!@#$%^&*()?":{}|<>]/g;
 
         if (trimmedQuery === '') {
             setError('Please enter a search term.');
             notify();
-            
-        }else if (invalidCharacters.test(trimmedQuery)) {
+
+        } else if (invalidCharacters.test(trimmedQuery)) {
             setError('Invalid characters detected. Please use alphanumeric characters only.');
             notify();
         }
-         else {
+        else {
             // Navigate to the search results page
             window.location.href = `/search?query=${trimmedQuery}`;
 
-            setError('');            
-            setQuery('');   
+            setError('');
+            setQuery('');
         }
     };
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch(`${apiBase}/api/categories`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setCategories(data);
+
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
 
     return (
         <>
@@ -71,13 +98,15 @@ const MegaNavbar = () => {
 
                             </Link>
                             <div className="sm:hidden">
-                                <button type="button" className="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none " id="hs-navbar-to-overlay-collapse" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-navbar-to-overlay" aria-label="Toggle navigation" data-hs-overlay="#hs-navbar-to-overlay" data-hs-overlay-options='{"moveOverlayToBody": 640}'>
+                                <button type="button" className="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none " id="hs-navbar-to-overlay-collapse" aria-haspopup="dialog" aria-expanded={'false'} aria-controls="hs-navbar-to-overlay" aria-label="Toggle navigation" data-hs-overlay="#hs-navbar-to-overlay" data-hs-overlay-options='{"moveOverlayToBody": 640}'
+                                >
                                     <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" x2="21" y1="6" y2="6" /><line x1="3" x2="21" y1="12" y2="12" /><line x1="3" x2="21" y1="18" y2="18" /></svg>
                                 </button>
                             </div>
                         </div>
-
-                        <div id="hs-navbar-to-overlay" className="hs-overlay hs-overlay-open:translate-x-0 [--auto-close:sm] -translate-x-full fixed top-0 start-0 transition-all duration-300 transform h-full w-full z-60 bg-white border-e sm:static sm:block sm:h-auto sm:w-full sm:border-e-transparent sm:transition-none sm:transform-none sm:translate-x-0 sm:z-40 hidden" role="dialog" tabIndex={-1} aria-label="Sidebar" data-hs-overlay-close-on-resize>
+                        {/* Menu */}
+                        <div
+                            id="hs-navbar-to-overlay" className={`hs-overlay hs-overlay-open:translate-x-0 [--auto-close:sm] -translate-x-full fixed top-0 start-0 transition-all duration-300 transform h-full w-full z-60 bg-white border-e sm:static sm:block sm:h-auto sm:w-full sm:border-e-transparent sm:transition-none sm:transform-none sm:translate-x-0 sm:z-40 hidden`} role="dialog" tabIndex={-1} aria-label="Sidebar" data-hs-overlay-close-on-resize>
                             <div className="overflow-hidden overflow-y-auto h-full [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 ">
 
                                 <div className="flex flex-col gap-y-3 sm:gap-y-0 sm:flex-row sm:items-center sm:justify-center  p-2 sm:p-0 xl:justify-start md:mx-5">
@@ -100,29 +129,37 @@ const MegaNavbar = () => {
                                         </h2>
                                     </div>
 
-                                    <Link className="sm:p-2 font-semibold text-sm text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400 " href="/" aria-current="page">Trang Chủ</Link>
+                                    <Link className="sm:p-2 font-semibold text-sm text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400 " href="/" aria-current="page"
+                                        onClick={closeMobileMenu}
+                                    >Trang Chủ</Link>
 
-                                    <Link className="sm:p-2 font-semibold text-sm text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400 " href="/about-us">Về Chúng Tôi</Link>
+                                    <Link className="sm:p-2 font-semibold text-sm text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400 " href="/about-us"
+                                        onClick={closeMobileMenu}
+                                    >Về Chúng Tôi</Link>
 
                                     <div className="hs-dropdown [--strategy:static] sm:[--strategy:absolute] [--adaptive:none] sm:[--trigger:hover] [--is-collapse:true] sm:[--is-collapse:false] ">
-                                        <Link href="/products" id="hs-mega-menu" className="hs-dropdown-toggle sm:p-5 flex items-center w-full text-gray-600 font-semibold text-sm hover:text-gray-400 focus:outline-hidden focus:text-gray-400 " aria-haspopup="menu" aria-expanded="false" aria-label="Mega Menu">
+                                        <Link href="/products" id="hs-mega-menu" className="hs-dropdown-toggle sm:p-5 flex items-center w-full text-gray-600 font-semibold text-sm hover:text-gray-400 focus:outline-hidden focus:text-gray-400 " aria-haspopup="menu" aria-expanded="false" aria-label="Mega Menu"
+                                            onClick={(e) => {
+                                                if (window.innerWidth <= 768) {
+                                                    e.preventDefault();
+                                                }
+                                            }}>
 
                                             Sản Phẩm
                                             <svg className="hs-dropdown-open:-rotate-180 sm:hs-dropdown-open:rotate-0 duration-300 ms-2 shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                         </Link>
 
                                         <div className="hs-dropdown-menu sm:transition-[opacity,margin] sm:ease-in-out sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-50 hidden z-10 sm:mt-1 top-full end-1/3 min-w-60 bg-white sm:shadow-md rounded-lg py-2 sm:px-2  before:absolute" role="menu" aria-orientation="vertical" aria-labelledby="hs-mega-menu">
-                                            <div className="sm:grid sm:grid-cols-1">
+                                            <div className="sm:grid sm:grid-cols-1 border rounded-lg border-gray-200 gap-x-2
+                                            md:border-none">
                                                 <div className="flex flex-col">
-                                                    <Link className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="#">
-                                                        About
-                                                    </Link>
-                                                    <Link className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100" href="#">
-                                                        Services
-                                                    </Link>
-                                                    <Link className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="#">
-                                                        Customer Story
-                                                    </Link>
+                                                    {categories.map((category: Category) => (
+                                                        <Link key={category._id} className="flex items-center gap-x-3.5 py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100
+                                                    border-b border-gray-200"
+                                                            href={`/products/categoryId/${category._id}`}>
+                                                            {category.name}
+                                                        </Link>
+                                                    ))}
                                                 </div>                              </div>
                                         </div>
                                     </div>
@@ -130,13 +167,13 @@ const MegaNavbar = () => {
                                     <div className="relative mt-3 lg:mt-0 lg:ms-10 flex items-center gap-4 sm:pb-2 lg:pb-0">
                                         <input
                                             type="text"
-                                            value={query}                                onChange={(e) => setQuery(e.target.value)}        
+                                            value={query} onChange={(e) => setQuery(e.target.value)}
                                             onKeyDown={(e) => {
                                                 if (e.key === 'Enter') {
                                                     handleSearch();
                                                 }
                                             }}
-                                           
+
                                             className="w-full px-4 py-2 pl-10 text-sm border border-gray-300 rounded-lg bg-white text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                             placeholder="Search for products..."
                                         />
@@ -153,7 +190,7 @@ const MegaNavbar = () => {
                                         </button>
                                     </div>
 
-                                    <div className="flex-col hidden md:flex lg:flex gap-2 ps-10 font-semibold">
+                                    <div className="flex-col hidden md:flex lg:flex gap-2 ps-10 font-semibold sm:text-xs">
                                         <div className="flex items-center gap-2">
                                             <Phone color='#606060' />
                                             <span className="text-red-500 pt-2">01 234 567 89</span>

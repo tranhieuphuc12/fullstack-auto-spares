@@ -20,8 +20,10 @@ const ProductCard = ({ product }: { product: Product }) => {
                 <div className="p-4">
                     <Link href={`/products/${product._id}`} >
                         <h3 className="text-sm text-center font-semibold mb-1
-                        text-gray-800 hover:text-red-600">{product.name}</h3></Link>
-                    <p className="text-green-600 text-center font-bold ">{product.price}</p>
+                        text-gray-800 hover:text-red-600">{product.name} ({product. productId})</h3></Link>
+                    <p className="text-green-600 text-center font-bold ">
+                        {new Intl.NumberFormat('vi-VN').format(product.price)} VND
+                    </p>
                 </div>
             </div>
         </>

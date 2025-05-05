@@ -20,7 +20,7 @@ const ProductsList = ({API} : {API:string}) => {
         setLoading(true);
         const debounceTimeout = setTimeout(() => {            
             const fetchProducts = async () => {
-                try {
+                try {                    
                     const response = await fetch(`${API}page=${page}&limit=${itemsPerPage}`);
                     if (!response.ok) {
                         const errorMessage = response.status === 404 

@@ -1,6 +1,41 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
+const mongoose = require('mongoose');
+
+//GET products by category's objectId with pagination
+router.get('/products/categoryId/:categoryId', async (req, res) => {
+  const categoryId = req.params.categoryId;
+  console.log(`categoryId: ${categoryId}`);
+  
+  const page = parseInt(req.query.page) || 2;
+  const limit = parseInt(req.query.limit) || 5;
+  const skip = (page - 1) * limit;
+  const stock = 5;
+
+    if (!mongoose.Types.ObjectId.isValid(categoryId)) {
+      return res.status(400).json({ error: 'Invalid category ID' });
+    }
+
+  try {
+    const products = await Product.find({categoryId });
+    const totalProducts = await Product.countDocuments({ categoryId });
+    
+    if (products.length === 0) {
+      return res.status(404).json({ error: 'No products found for this category' });
+    }
+
+    res.status(200).json({
+      products,
+      totalPages: Math.ceil(totalProducts / limit),
+      totalItems: totalProducts,
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch products' });
+  } finally {
+    console.log(`GET /products/categoryId/${categoryId}`);
+  }
+});
 
 // GET products by search term with pagination
 router.get('/search', async (req, res) => {

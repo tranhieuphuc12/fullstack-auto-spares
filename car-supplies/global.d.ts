@@ -15,4 +15,14 @@ declare global {
   }
 }
 
+declare global {
+  interface Window {
+    HSOverlay: {
+      getInstance: (element: HTMLElement) => {
+        close: () => void;
+      };
+    };
+  }
+}
+
 export {};
