@@ -1,0 +1,30 @@
+# docker-compose.yml
+
+services:
+  frontend:
+    build: ./car-supplies
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    env_file:
+      - .env
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env 
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

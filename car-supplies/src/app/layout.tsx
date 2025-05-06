@@ -1,5 +1,4 @@
 
-import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import Map from "@/app/components/Map";
 import PrelineScriptWrapper from '@/app/components/PrelineScriptWrapper';
@@ -33,8 +32,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={inter.className}>
       <body className="antialiased">
         
-        
-        
+
         <MegaNavbar />
         {children}
         <Map />
