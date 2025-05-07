@@ -1,38 +1,47 @@
-# version: '3.8'
+version: "3.8"
 
 services:
   frontend:
+    platform: linux/amd64
     image: tranhieuphuc12/nextjs-frontend
+    container_name: frontend
     restart: always
     expose:
       - 8080
     env_file:
       - .env
+    networks:
+      - nginx_network
 
   backend:
+    platform: linux/amd64
     image: tranhieuphuc12/express-backend
+    container_name: backend
     restart: always
     expose:
       - 3000
     env_file:
       - .env
+    networks:
+      - nginx_network
 
-  nginx:
+  nginx-proxy:
     image: nginx:latest
+    container_name: nginx-proxy
     restart: always
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/log/nginx:/var/log/nginx
     depends_on:
       - frontend
       - backend
+    networks:
+      - nginx_network
 
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
+networks:
+  nginx_network:
+    external: true

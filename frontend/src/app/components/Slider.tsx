@@ -2,8 +2,8 @@
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import Slider1 from '../../../public/slider-4.jpg';
-import Slider2 from '../../../public/slider-5.jpg';
+import Slider1 from '../../../public/slider-1.jpg';
+import Slider2 from '../../../public/slider-2.jpg';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
