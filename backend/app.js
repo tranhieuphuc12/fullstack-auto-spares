@@ -22,9 +22,8 @@ app.use(express.json());
 app.use('/api', [productApiRoutes, categoryApiRoutes, carApiRoutes, brandApiRoutes]);
 
 // Connect to MongoDB
-if (mongoUri) {
-  console.log('✅ MongoDB URI is defined in .env file', mongoUri);
-
+if (!mongoUri) {
+  console.log('✅ MongoDB URI is not defined in .env file', mongoUri);
   process.exit(1);
 }
 
