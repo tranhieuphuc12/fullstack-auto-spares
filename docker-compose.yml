@@ -1,30 +1,38 @@
-# docker-compose.yml
+# version: '3.8'
 
 services:
   frontend:
-    build: ./frontend
-    ports:
-      - "8080:8080"
-    depends_on:
-      - backend
+    image: tranhieuphuc12/nextjs-frontend
+    restart: always
+    expose:
+      - 8080
     env_file:
       - .env
 
   backend:
-    build: ./backend
-    ports:
-      - "3000:3000"
+    image: tranhieuphuc12/express-backend
+    restart: always
+    expose:
+      - 3000
     env_file:
-      - .env 
-    depends_on:
-      - mongo
+      - .env
 
-  mongo:
-    image: mongo:6
+  nginx:
+    image: nginx:latest
+    restart: always
     ports:
-      - "27017:27017"
+      - "80:80"
+      - "443:443"
     volumes:
-      - mongo-data:/data/db
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    depends_on:
+      - frontend
+      - backend
 
-volumes:
-  mongo-data:
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
