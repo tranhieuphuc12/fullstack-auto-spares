@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto">
-      
+       <link rel="icon" href="/logo.png" />
       <Slider />
       
       <ProductList API={API_PRODUCTS}/>

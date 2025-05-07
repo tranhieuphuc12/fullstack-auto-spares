@@ -8,7 +8,7 @@ router.get('/products/categoryId/:categoryId', async (req, res) => {
   const categoryId = req.params.categoryId;
   console.log(`categoryId: ${categoryId}`);
   
-  const page = parseInt(req.query.page) || 2;
+  const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
   const skip = (page - 1) * limit;
   const stock = 5;
@@ -40,7 +40,7 @@ router.get('/products/categoryId/:categoryId', async (req, res) => {
 // GET products by search term with pagination
 router.get('/search', async (req, res) => {
   const searchTerm = req.query.query;
-  const page = parseInt(req.query.page) || 2;
+  const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
@@ -88,12 +88,13 @@ router.get('/search', async (req, res) => {
 
 // GET products with pagination
 router.get('/products', async (req, res) => {
-  const page = parseInt(req.query.page) || 2;
+  const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
   try {
     const products = await Product.find().skip(skip).limit(limit);
+    
     const totalProducts = await Product.countDocuments();
     res.status(200).json({
       products,
