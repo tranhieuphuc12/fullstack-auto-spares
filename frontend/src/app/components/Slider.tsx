@@ -20,9 +20,7 @@ const Slider = () => {
 
     const swiperRef = useRef<SwiperType | null>(null);
 
-    const handleClick = () => {
-        swiperRef.current?.slideNext();
-    };
+ 
 
     const sliders = [
         { name: 'Brand 1', src: Slider1 },
@@ -49,7 +47,7 @@ const Slider = () => {
                     <SwiperSlide key={slider.name}>
                         <div
                             className="flex justify-center items-center cursor-pointer"
-                            onClick={handleClick}
+                            
                         >
                             <Image
                                 src={slider.src}
