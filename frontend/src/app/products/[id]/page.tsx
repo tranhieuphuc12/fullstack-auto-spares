@@ -124,7 +124,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
         <div className="bg-white p-6 rounded shadow space-y-4">
           <h2 className="text-xl font-semibold mb-2">Thông tin sản phẩm</h2>
           <p className="text-gray-700 leading-relaxed">
-            <strong>Dây curoa</strong> là bộ phận quan trọng trong hệ thống truyền động của động cơ ô tô hay các loại máy móc trong công nghiệp...
+            {product?.description || "Không có thông tin mô tả"}
           </p>
 
           {/* Optional large image */}

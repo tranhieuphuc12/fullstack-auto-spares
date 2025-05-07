@@ -9,7 +9,8 @@ import Shopee from '../../../public/icons8-shopee.svg'
 const Footer = () => {
     const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER;
     const ADDRESS = process.env.NEXT_PUBLIC_ADDRESS;
-    const EMAIL = process.env.NEXT_PUBLIC_EMAIL;
+    const EMAIL = process.env.NEXT_PUBLIC_EMAIL;    
+    const FACEBOOK_LINK = process.env.NEXT_PUBLIC_FACEBOOK;
     return (
         <footer className="bg-gray-800 text-white p-10">
             <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -32,9 +33,9 @@ const Footer = () => {
                 <nav className="space-y-4">
                     <h6 className="text-lg font-semibold border-b border-gray-600 pb-2"><Info className='inline-block mx-1' />Thông Tin</h6>
                     <ul className="space-y-2 text-sm">
-                        <li>Email: <a className="text-yellow-400 hover:underline cursor-pointer">{EMAIL}</a></li>
-                        <li>Hotline: <a className="text-yellow-400 hover:underline cursor-pointer">{PHONE_NUMBER}</a></li>
-                        <li>Địa chỉ: <a className="text-yellow-400 hover:underline cursor-pointer"> {ADDRESS}</a></li>
+                        <li>Email: <a href={`mailto:${EMAIL}`} className="text-yellow-400 hover:underline cursor-pointer">{EMAIL}</a></li>
+                        <li>Hotline: <a href={`tel:${PHONE_NUMBER}`} className="text-yellow-400 hover:underline cursor-pointer">{PHONE_NUMBER}</a></li>
+                        <li>Địa chỉ: <a href='https://maps.app.goo.gl/AY72PH5oMAYKZj9v6' className="text-yellow-400 hover:underline cursor-pointer"> {ADDRESS}</a></li>
                         <li>Giờ làm việc: Thứ 2 - Thứ 7, 8h - 17h</li>
                         <li><Image
                             src={BCT}
@@ -70,7 +71,8 @@ const Footer = () => {
                                 alt="Facebook"
                                 width={20}
                                 height={20}
-                                className='text-yellow-50 hover:text-yellow-400 cursor-pointer inline-block mx-1' /><a className="text-yellow-400 hover:underline cursor-pointer">Facebook</a>
+                                className='text-yellow-50 hover:text-yellow-400 cursor-pointer inline-block mx-1' /><a 
+                                href={FACEBOOK_LINK}className="text-yellow-400 hover:underline cursor-pointer">Facebook</a>
                         </li>
 
                         <li>
@@ -80,7 +82,7 @@ const Footer = () => {
                                 width={20}
                                 height={20}
                                 className="object-contain inline-block mx-1 text-yellow-50 hover:text-yellow-400 cursor-pointer"
-                            /><a className="text-yellow-400 hover:underline">Zalo</a></li>
+                            /><a   href={`https://zalo.me/${PHONE_NUMBER}`} className="text-yellow-400 hover:underline cursor-pointer">Zalo</a></li>
                         <li>
                             <Image
                                 src={Tiktok}
@@ -88,7 +90,7 @@ const Footer = () => {
                                 width={20}
                                 height={20}
                                 className="object-contain inline-block mx-1 text-yellow-50 hover:text-yellow-400 cursor-pointer"
-                            /><a className="text-yellow-400 hover:underline">Tiktok</a></li>
+                            /><a className="text-yellow-400 hover:underline cursor-pointer">Tiktok</a></li>
                         <li>
                             <Image
                                 src={Shopee}
@@ -96,7 +98,7 @@ const Footer = () => {
                                 width={20}
                                 height={20}
                                 className="object-contain inline-block mx-1 text-yellow-50 hover:text-yellow-400 cursor-pointer"
-                            /><a className="text-yellow-400 hover:underline">Shopee</a></li>
+                            /><a className="text-yellow-400 hover:underline cursor-pointer">Shopee</a></li>
                     </ul>
                 </nav>
             </div>

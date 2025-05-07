@@ -2,8 +2,12 @@
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import Slider1 from '../../../public/slider-5.jpg';
-import Slider2 from '../../../public/slider-6.jpg';
+import Slider1 from '../../../public/slider-1.jpg';
+import Slider2 from '../../../public/slider-2.jpg';
+import Slider3 from '../../../public/slider-3.jpg';
+import Slider4 from '../../../public/slider-4.jpg';
+import Slider5 from '../../../public/slider-5.jpg';
+import Slider6 from '../../../public/slider-6.jpg';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -23,8 +27,10 @@ const Slider = () => {
     const sliders = [
         { name: 'Brand 1', src: Slider1 },
         { name: 'Brand 2', src: Slider2 },
-        { name: 'Brand 3', src: Slider1 },
-        { name: 'Brand 4', src: Slider2 },        
+        { name: 'Brand 3', src: Slider3 },
+        { name: 'Brand 4', src: Slider4 },        
+        { name: 'Brand 5', src: Slider5 },        
+        { name: 'Brand 6', src: Slider6 },        
     ]
     
     

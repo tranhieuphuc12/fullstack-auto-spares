@@ -192,14 +192,21 @@ const MegaNavbar = () => {
                                     </div>
 
                                     <div className="flex-col hidden md:flex lg:flex gap-2 ps-10 font-semibold sm:text-xs">
-                                        <div className="flex items-center gap-2">
-                                            <Phone color='#606060' />
-                                            <span className="text-red-500 pt-2">{PHONE_NUMBER}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <MapPinned color='#606060' />
-                                            <span className="text-red-500 pt-2">Show Room</span>
-                                        </div>
+                                        <button className="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-gray-300 rounded-lg hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700 group py-2 px-3 gap-2 cursor-pointer">
+                                            <span className="w-56 h-48 rounded bg-green-600 absolute bottom-0 left-0 translate-x-full translate-y-full mb-9 ml-9 transition-all duration-500 ease-out group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+                                            <span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white flex items-center gap-2 cursor-pointer" onClick={() => window.open('https://maps.app.goo.gl/AY72PH5oMAYKZj9v6', '_blank')}>
+                                                <MapPinned className='text-red-600 group-hover:text-white' />
+                                                <span className="font-bold text-red-600 text-sm group-hover:text-white">Show Room</span></span>
+                                        </button>
+                                        <button className="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-gray-300 rounded-lg hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700 group py-2 px-3 gap-2 cursor-pointer">
+                                            <span className="w-56 h-48 rounded bg-green-600 absolute bottom-0 left-0 translate-x-full translate-y-full mb-9 ml-9 transition-all duration-500 ease-out group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+                                            <span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white flex items-center gap-2 cursor-pointer"
+                                            onClick={() => window.location.assign(`tel:${PHONE_NUMBER}`)}>   
+                                                <Phone className="text-red-600 group-hover:text-white" />
+                                                <span className="font-bold text-red-600 text-sm group-hover:text-white">{PHONE_NUMBER}</span>
+                                            </span>
+                                        </button>
+
                                     </div>
 
 
@@ -213,4 +220,3 @@ const MegaNavbar = () => {
     );
 };
 export default MegaNavbar;
-
