@@ -20,42 +20,38 @@ const Slider = () => {
 
     const swiperRef = useRef<SwiperType | null>(null);
 
- 
+
 
     const sliders = [
-        { name: 'Brand 1', src: Slider1 },
-        { name: 'Brand 2', src: Slider2 },
-        { name: 'Brand 3', src: Slider3 },
-        { name: 'Brand 4', src: Slider4 },        
-        { name: 'Brand 5', src: Slider5 },        
-        { name: 'Brand 6', src: Slider6 },        
+        { id: 1, name: 'Brand 1', src: Slider1 },
+        { id: 2, name: 'Brand 2', src: Slider2 },
+        { id: 3, name: 'Brand 3', src: Slider3 },
+        { id: 4, name: 'Brand 4', src: Slider4 },
+        { id: 5, name: 'Brand 5', src: Slider5 },
+        { id: 6, name: 'Brand 6', src: Slider6 },
     ]
-    
-    
+
+
 
     return (
-        <div className="py-8 bg-white">            
+        <div className="py-8 bg-white">
             <Swiper
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 pagination={true}
-                modules={[Navigation,Pagination]}                
-                slidesPerView={1}                                
+                modules={[Navigation, Pagination]}
+                slidesPerView={1}
                 navigation={true}
                 className="max-w-7xl mx-auto"
             >
                 {sliders.map((slider) => (
                     <SwiperSlide key={slider.name}>
-                        <div
-                            className="flex justify-center items-center cursor-pointer"
-                            
-                        >
+                        <div className="w-full rounded-2xl overflow-hidden shadow-xl bg-gray-100">
                             <Image
                                 src={slider.src}
                                 alt={slider.name}
-                                layout="responsive"
-                                className="w-full object-cover"
+                                className="w-full h-auto object-cover"
                                 style={{ maxHeight: '500px' }}
-                            />
+                            />                         
                         </div>
                     </SwiperSlide>
                 ))}
