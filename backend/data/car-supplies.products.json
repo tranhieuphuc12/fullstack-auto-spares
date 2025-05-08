@@ -18,6 +18,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0eef"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh trong (all glc)",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.192Z"
   }
 },
 {
@@ -40,6 +45,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0eef"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh ngoai (all glc)",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.237Z"
   }
 },
 {
@@ -62,6 +72,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0eef"
+  },
+  "description_normalized": "loc gio đong co la bo phan quan trong trong he thong đong co cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc đong co ( <= 2017)",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.240Z"
   }
 },
 {
@@ -84,6 +99,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0eef"
+  },
+  "description_normalized": "loc nhot la bo phan quan trong trong he thong boi tron cua xe o to, giup loc sach bui ban va tap chat trong dau nhot truoc khi vao buong đot. viec thay the loc nhot đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc nhot (all glc)",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.242Z"
   }
 },
 {
@@ -106,6 +126,11 @@
   },
   "carId": {
     "$oid": "680f33738db202dda47b0f02"
+  },
+  "description_normalized": "loc gio đong co la bo phan quan trong trong he thong đong co cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc đong co",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.244Z"
   }
 },
 {
@@ -128,6 +153,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef1"
+  },
+  "description_normalized": "loc nhot la bo phan quan trong trong he thong boi tron cua xe o to, giup loc sach bui ban va tap chat trong dau nhot truoc khi vao buong đot. viec thay the loc nhot đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc nhot",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.246Z"
   }
 },
 {
@@ -150,6 +180,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef1"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.248Z"
   }
 },
 {
@@ -172,6 +207,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef1"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.250Z"
   }
 },
 {
@@ -194,6 +234,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef1"
+  },
+  "description_normalized": "loc gio đong co la bo phan quan trong trong he thong đong co cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio đong co",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.252Z"
   }
 },
 {
@@ -216,6 +261,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef2"
+  },
+  "description_normalized": "loc nhot la bo phan quan trong trong he thong boi tron cua xe o to, giup loc sach bui ban va tap chat trong dau nhot truoc khi vao buong đot. viec thay the loc nhot đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc nhot",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.254Z"
   }
 },
 {
@@ -238,6 +288,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef2"
+  },
+  "description_normalized": "loc gio đong co la bo phan quan trong trong he thong đong co cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio đong co",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.256Z"
   }
 },
 {
@@ -260,6 +315,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef2"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.259Z"
   }
 },
 {
@@ -282,6 +342,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef2"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.260Z"
   }
 },
 {
@@ -304,6 +369,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef3"
+  },
+  "description_normalized": "loc nhot la bo phan quan trong trong he thong boi tron cua xe o to, giup loc sach bui ban va tap chat trong dau nhot truoc khi vao buong đot. viec thay the loc nhot đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc nhot",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.261Z"
   }
 },
 {
@@ -326,6 +396,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef3"
+  },
+  "description_normalized": "loc gio đong co la bo phan quan trong trong he thong đong co cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio đong co",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.261Z"
   }
 },
 {
@@ -348,6 +423,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef3"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.262Z"
   }
 },
 {
@@ -370,6 +450,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef3"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.263Z"
   }
 },
 {
@@ -392,6 +477,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef4"
+  },
+  "description_normalized": "loc nhot la bo phan quan trong trong he thong boi tron cua xe o to, giup loc sach bui ban va tap chat trong dau nhot truoc khi vao buong đot. viec thay the loc nhot đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc nhot",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.264Z"
   }
 },
 {
@@ -414,6 +504,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef4"
+  },
+  "description_normalized": "loc gio đong co la bo phan quan trong trong he thong đong co cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio đong co",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.266Z"
   }
 },
 {
@@ -436,6 +531,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef4"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.267Z"
   }
 },
 {
@@ -458,6 +558,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef5"
+  },
+  "description_normalized": "loc nhot la bo phan quan trong trong he thong boi tron cua xe o to, giup loc sach bui ban va tap chat trong dau nhot truoc khi vao buong đot. viec thay the loc nhot đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc nhot",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.267Z"
   }
 },
 {
@@ -480,6 +585,11 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef5"
+  },
+  "description_normalized": "loc gio đong co la bo phan quan trong trong he thong đong co cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio đong co",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.268Z"
   }
 },
 {
@@ -500,5 +610,10 @@
   },
   "carId": {
     "$oid": "680f2f718db202dda47b0ef5"
+  },
+  "description_normalized": "loc gio may lanh la bo phan quan trong trong he thong đieu hoa khong khi cua xe o to, giup loc sach bui ban va tap chat trong khong khi truoc khi vao buong đot. viec thay the loc gio đinh ky giup tang hieu suat đong co, tiet kiem nhien lieu va giam khi thai.",
+  "name_normalized": "loc gio may lanh",
+  "updatedAt": {
+    "$date": "2025-05-08T03:10:48.269Z"
   }
 }]

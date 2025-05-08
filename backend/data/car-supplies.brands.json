@@ -205,4 +205,20 @@
   "name": "Tongyang",
   "logo": "nsx-18.webp",
   "type": "nsx"
+},
+{
+  "_id": {
+    "$oid": "681c44aec8e20a64b62c93d0"
+  },
+  "name": "Mercedes-Benz",
+  "logo": "",
+  "type": "car"
+},
+{
+  "_id": {
+    "$oid": "681c44fcc8e20a64b62c93d1"
+  },
+  "name": "BMW",
+  "logo": "",
+  "type": "car"
 }]

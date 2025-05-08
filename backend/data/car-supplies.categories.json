@@ -15,15 +15,4 @@
     "$oid": "680f2b908db202dda47b0ee7"
   },
   "name": "Lọc nhớt"
-},
-{
-  "_id": {
-    "$oid": "680f2c058db202dda47b0eea"
-  },
-  "name": "Phụ tùng bảo dưỡng",
-  "subCategories": [
-    "680f2b908db202dda47b0ee5",
-    "680f2b908db202dda47b0ee6",
-    "680f2b908db202dda47b0ee7"
-  ]
 }]
