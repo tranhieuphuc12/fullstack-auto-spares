@@ -5,14 +5,16 @@ import Image from 'next/image';
 import Logo from '../../../public/logo.png';
 import { MapPinned, Phone } from 'lucide-react';
 import { toast } from 'react-toastify';
-import Category from '../interfaces/ICategory';
-
+import Category from '@/app/interfaces/ICategory';
+import Brand from '@/app/interfaces/IBrand';
 
 const MegaNavbar = () => {
 
     const [error, setError] = useState('');
     const [query, setQuery] = useState('');
     const [categories, setCategories] = useState<Category[]>([]);
+    const [cars , setCars] = useState<Brand[]>([]);
+    const [searchHistory, setSearchHistory] = useState<string[]>([]);
     const apiBase = process.env.NEXT_PUBLIC_API_BASE;
     const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER;
     const notify = () => toast.error(error || 'Ký tự không hợp lệ', {
@@ -51,13 +53,18 @@ const MegaNavbar = () => {
             notify();
         }
         else {
+            // Save the search query to local storage
+            const updatedHistory = [query, ...searchHistory.filter(q => q !== query)].slice(0, 5);
+            localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
+            setSearchHistory(updatedHistory);
+
             // Navigate to the search results page
             window.location.href = `/search?query=${trimmedQuery}`;
-
             setError('');
             setQuery('');
         }
     };
+
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -73,14 +80,35 @@ const MegaNavbar = () => {
                 console.error('Error fetching categories:', error);
             }
         };
-
+        const fetchCarBrands = async () => {
+            try {
+                const response = await fetch(`${apiBase}/api/brands/car`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();                
+                setCars(data);
+            } catch (error) {
+                console.error('Error fetching cars:', error);
+            }
+        }
+        fetchCarBrands();
         fetchCategories();
     }, []);
+
+    useEffect(() => {
+        const history = localStorage.getItem('searchHistory') || '[]';
+        if (history) {
+            setSearchHistory(JSON.parse(history));
+        }
+    }, []);
+
 
 
     return (
         <>
             <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-3 sm:py-3  border-b border-gray-200  shadow-md">
+
                 <nav className="max-w-[85rem] w-full mx-auto px-4 md:px-6 lg:px-8">
                     <div className="relative sm:flex sm:items-center">
                         <div className="flex items-center justify-between">
@@ -150,18 +178,33 @@ const MegaNavbar = () => {
                                             <svg className="hs-dropdown-open:-rotate-180 sm:hs-dropdown-open:rotate-0 duration-300 ms-2 shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                         </Link>
 
-                                        <div className="hs-dropdown-menu sm:transition-[opacity,margin] sm:ease-in-out sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-50 hidden z-10 sm:mt-1 top-full end-1/3 min-w-60 bg-white sm:shadow-md rounded-lg py-2 sm:px-2  before:absolute" role="menu" aria-orientation="vertical" aria-labelledby="hs-mega-menu">
-                                            <div className="sm:grid sm:grid-cols-1 border rounded-lg border-gray-200 gap-x-2
+                                        <div className="hs-dropdown-menu sm:transition-[opacity,margin] sm:ease-in-out sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-90 hidden z-10 sm:mt-1 top-2/3 end-1/3 min-w-60 bg-white sm:shadow-md rounded-lg py-2 sm:px-2  before:absolute" role="menu" aria-orientation="vertical" aria-labelledby="hs-mega-menu">
+                                            <div className="sm:grid sm:grid-cols-2 border rounded-lg border-gray-200 gap-x-2
                                             md:border-none">
                                                 <div className="flex flex-col">
                                                     {categories.map((category: Category) => (
-                                                        <Link key={category._id} className="flex items-center gap-x-3.5 py-2 px-3 font-semibold text-sm text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400
-                                                    border-b border-gray-200"
+                                                        <Link key={category._id} className="flex items-center py-2 px-3 font-semibold text-sm text-gray-600 hover:text-gray-400 
+                                                        rounded-lg
+                                                        hover:bg-gray-200
+                                                        focus:outline-hidden focus:text-gray-400
+                                                    "
                                                             href={`/products/categoryId/${category._id}`}>
                                                             {category.name}
                                                         </Link>
                                                     ))}
-                                                </div>                              </div>
+                                                </div>
+                                                <div className="flex flex-col">
+                                                    {cars.map((car: Brand) => (
+                                                    <Link key={car._id} className="flex items-center py-2 px-3 font-semibold text-sm text-gray-600 hover:text-gray-400 
+                                                        rounded-lg
+                                                        hover:bg-gray-200
+                                                        focus:outline-hidden focus:text-gray-400"
+                                                         href={`/products/brand/${car.name}`}>
+                                                         {car.name}
+                                                    </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -189,6 +232,7 @@ const MegaNavbar = () => {
                                                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
                                             </svg>
                                         </button>
+
                                     </div>
 
                                     <div className="flex-col hidden md:flex lg:flex gap-2 ps-10 font-semibold sm:text-xs">
@@ -201,7 +245,7 @@ const MegaNavbar = () => {
                                         <button className="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-gray-300 rounded-lg hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700 group py-2 px-3 gap-2 cursor-pointer">
                                             <span className="w-56 h-48 rounded bg-green-600 absolute bottom-0 left-0 translate-x-full translate-y-full mb-9 ml-9 transition-all duration-500 ease-out group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
                                             <span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white flex items-center gap-2 cursor-pointer"
-                                            onClick={() => window.location.assign(`tel:${PHONE_NUMBER}`)}>   
+                                                onClick={() => window.location.assign(`tel:${PHONE_NUMBER}`)}>
                                                 <Phone className="text-red-600 group-hover:text-white" />
                                                 <span className="font-bold text-red-600 text-sm group-hover:text-white">{PHONE_NUMBER}</span>
                                             </span>
