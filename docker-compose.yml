@@ -6,8 +6,8 @@ services:
     platform: linux/amd64
     container_name: backend-phutunghd
     image: tranhieuphuc12/express-api-phutunghd:latest
-    ports:
-      - "3001:3001" 
+    expose:
+      - 8080
     depends_on:
       - mongodb
     env_file:
