@@ -1,6 +1,29 @@
 version: "3.8"
 
 services:
+
+  backend-phutunghd:
+    platform: linux/amd64
+    container_name: backend-phutunghd
+    image: tranhieuphuc12/express-api-phutunghd:latest
+    ports:
+      - "5000:5000" 
+    depends_on:
+      - mongodb
+    env_file:
+      - .env.hd  
+    restart: always
+    networks:
+      - nginx_network
+
+  mongodb:
+   image: mongo
+   volumes:
+    - mongo-data:/data/db
+   restart: always
+   networks:
+    - nginx_network
+
   frontend:
     platform: linux/amd64
     image: tranhieuphuc12/nextjs-frontend
@@ -42,6 +65,10 @@ services:
     networks:
       - nginx_network
 
+volumes:
+  mongo-data: 
+  
 networks:
   nginx_network:
     external: true
+
