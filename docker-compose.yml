@@ -7,7 +7,7 @@ services:
     container_name: backend-phutunghd
     image: tranhieuphuc12/express-api-phutunghd:latest
     expose:
-      - 8080
+      - 3001
     depends_on:
       - mongodb
     env_file:
