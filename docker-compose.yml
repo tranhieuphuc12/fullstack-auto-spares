@@ -18,6 +18,8 @@ services:
 
   mongodb:
    image: mongo
+   ports:
+    - 27017:27017
    volumes:
     - mongo-data:/data/phutungdb
    restart: always
