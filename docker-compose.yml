@@ -48,5 +48,5 @@ services:
 
 networks:
   nginx_network:
-    external: true
+    external: bridge
 
