@@ -71,8 +71,6 @@ services:
     networks:
       - nginx_network
 
-volumes:
-  mongo-data: 
 
 networks:
   nginx_network:
