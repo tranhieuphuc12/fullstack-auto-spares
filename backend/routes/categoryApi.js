@@ -14,4 +14,24 @@ router.get('/categories', async (req, res) => {
   }
 });
 
+//GET a single category by ID
+router.get('/categories/:id', async (req, res) => {
+  const categoryId = req.params.id;
+
+  if (!categoryId) {
+    return res.status(400).json({ error: 'Category ID is required' });
+  }
+
+  try {
+    const category = await Category.findOne({ _id: categoryId });
+    if (!category) return res.status(404).json({ error: 'Category not found' });
+
+    res.json({ id: category._id.toString(), name: category.name });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch category' });
+  } finally {
+    console.log(`GET /categories/${categoryId}`);
+  }
+});
+
 module.exports = router;

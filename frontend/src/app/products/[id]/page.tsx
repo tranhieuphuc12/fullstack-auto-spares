@@ -6,7 +6,7 @@ import Product from "@/app/interfaces/IProduct";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import ProductImagesCarousel from "@/app/components/ProductImagesCarousel";
 import GroupFixedButtons from "@/app/components/GroupFixedButtons";
-
+import Breadcrumb from "@/app/components/breadcrumb";
 
 const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
 
@@ -26,8 +26,8 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setProduct(data);
-        setMainImage(data.images[0]);
+        setProduct(data.product);
+        setMainImage(data.product.images[0]);
       } catch (error) {
         console.error("Error fetching product:", error);
         // setError("Failed to load product" + error);
@@ -78,8 +78,11 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <>
+     
       <div className="max-w-5xl mx-auto px-4 py-8 border-t border-gray-200  shadow-md">
         {/* Combined Image + Info */}
+         <Breadcrumb />
+      
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Main Image and Thumbnails */}
           <div>

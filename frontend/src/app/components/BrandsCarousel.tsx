@@ -20,7 +20,7 @@ const BrandCarousel = ({BASE_URL, type, title }: BrandCarouselProps) => {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/brands/${type}`);
+        const response = await fetch(`${BASE_URL}/api/brands/type/${type}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

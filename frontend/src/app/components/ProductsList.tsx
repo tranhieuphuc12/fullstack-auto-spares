@@ -63,7 +63,7 @@ const ProductsList = ({API} : {API:string}) => {
 
     return (
         <>
-            <ProductTitle title="Sản Phẩm" />
+            <ProductTitle />
             <div className="px-4 py-8 bg-white">
                 <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
                     {loading && (

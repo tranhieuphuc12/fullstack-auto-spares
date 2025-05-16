@@ -82,7 +82,7 @@ const MegaNavbar = () => {
         };
         const fetchCarBrands = async () => {
             try {
-                const response = await fetch(`${apiBase}/api/brands/car`);
+                const response = await fetch(`${apiBase}/api/brands/type/car`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

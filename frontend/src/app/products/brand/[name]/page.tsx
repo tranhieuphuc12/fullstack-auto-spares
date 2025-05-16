@@ -2,7 +2,7 @@
 import GroupFixedButtons from "@/app/components/GroupFixedButtons";
 import ProductsList from "@/app/components/ProductsList";
 import { use } from "react";
-
+import Breadcrumbs from "@/app/components/breadcrumb";
 
 
 
@@ -18,6 +18,7 @@ const ProductsPage = ({ params }: { params: Promise<{ name: string }> }) => {
 
     return (
         <>
+            <Breadcrumbs className="ms-5"/>
             <ProductsList API={API_PRODUCTS} />
             <GroupFixedButtons />
         </>

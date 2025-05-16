@@ -4,7 +4,7 @@ const Brand = require('../models/Brand');
 const mongoose = require('mongoose');
 
 //GET brands by type
-router.get('/brands/:type', async (req, res) => {
+router.get('/brands/type/:type', async (req, res) => {
   const { type } = req.params;
   try {
     const brands = await Brand.find({ type });
@@ -33,4 +33,24 @@ router.get('/brands', async (req, res) => {
     console.log('GET /brands');
   }
 });
+// GET a single brand by brand's name
+router.get('/brands/name/:name', async (req, res) => {
+  const brandName = req.params.name;
+
+  if (!brandName) {
+    return res.status(400).json({ error: 'Brand name is required' });
+  }
+
+  try {
+    const brand = await Brand.findOne({ name: brandName });
+    if (!brand) return res.status(404).json({ error: 'Brand not found' });
+
+    res.json({ id: brand._id.toString(), name: brand.name });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch brand' });
+  } finally {
+    console.log(`GET /brands/${brandName}`);
+  }
+});
+
 module.exports = router;

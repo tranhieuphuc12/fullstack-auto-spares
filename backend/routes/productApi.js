@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
+const Category = require('../models/Category');
 const Car = require('../models/Car');
 const mongoose = require('mongoose');
 
@@ -159,7 +160,7 @@ router.get('/products', async (req, res) => {
 
 });
 
-// GET a single product by ID
+// GET a single product by ID 
 router.get('/products/:id', async (req, res) => {
   const productId = req.params.id;
 
@@ -167,12 +168,18 @@ router.get('/products/:id', async (req, res) => {
     return res.status(400).json({ error: 'Product ID is required' });
   }
 
-
-
   try {
     const product = await Product.findOne({ _id: productId });
     if (!product) return res.status(404).json({ error: 'Product not found' });
-    res.json(product);
+    const category = await Category.findOne({ _id: product.categoryId });
+
+    res.json({
+      product,
+      category: {
+        id: category._id.toString(),
+        name: category.name,
+      },
+    });
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch product' });
   } finally {
