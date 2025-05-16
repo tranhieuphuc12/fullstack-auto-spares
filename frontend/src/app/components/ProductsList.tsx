@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Pagination from './Pagination';
 import ProductCard from './ProductCard';
-import Product  from "@/app/interfaces/IProduct";
+import Product from "@/app/interfaces/IProduct";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import ProductTitle from "./ProductTitle";
 
 
-const ProductsList = ({API} : {API:string}) => {
+
+const ProductsList = ({ API, title }: { API: string, title?: string }) => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
@@ -18,23 +19,23 @@ const ProductsList = ({API} : {API:string}) => {
 
     useEffect(() => {
         setLoading(true);
-        const debounceTimeout = setTimeout(() => {            
+        const debounceTimeout = setTimeout(() => {
             const fetchProducts = async () => {
-                try {                    
+                try {
                     const response = await fetch(`${API}page=${page}&limit=${itemsPerPage}`);
                     if (!response.ok) {
-                        const errorMessage = response.status === 404 
-                            ? "Không tìm thấy sản phẩm nào" 
+                        const errorMessage = response.status === 404
+                            ? "Không tìm thấy sản phẩm nào"
                             : `Lỗi: ${response.statusText}`;
                         setError(errorMessage);
                         return;
                     }
-                    
+
                     const data = await response.json();
                     setProducts(data.products);
                     setTotalPages(data.totalPages);
                     setTotalItems(data.totalItems);
-                } catch (error) {                    
+                } catch (error) {
                     setError("Đã xảy ra lỗi khi tải sản phẩm");
                     console.error("Error fetching products:", error);
                 } finally {
@@ -42,9 +43,9 @@ const ProductsList = ({API} : {API:string}) => {
                 }
             };
             fetchProducts();
-        }, 300); 
+        }, 300);
 
-        return () => clearTimeout(debounceTimeout); 
+        return () => clearTimeout(debounceTimeout);
     }, [API, page]);
 
     const handlePageChange = (page: number) => {
@@ -63,7 +64,15 @@ const ProductsList = ({API} : {API:string}) => {
 
     return (
         <>
-            <ProductTitle />
+            {title ? (
+                <div className="flex justify-center items-center bg-gray-100 p-4 sm:p-6 md:p-8">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center my-4 text-black">
+                        {title}
+                    </h1>
+                </div>
+            ) : (
+                <ProductTitle />
+            )}
             <div className="px-4 py-8 bg-white">
                 <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
                     {loading && (
