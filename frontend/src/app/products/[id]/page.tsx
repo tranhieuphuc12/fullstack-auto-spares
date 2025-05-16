@@ -132,13 +132,17 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
 
           {/* Optional large image */}
           <div className="mt-6">
-            <Image
-              src={`/products/${mainImage}` || "/placeholder-image.png"}
-              alt="Chi tiết sản phẩm"
-              width={800}
-              height={500}
-              className="w-full h-auto rounded-lg shadow"
-            />
+            {product?.images?.map((image, index) => (
+              <div key={index} className="mb-4">
+                <Image
+                  src={`/products/${image}` || "/placeholder-image.png"}
+                  alt={`Product Image ${index + 1}`}
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

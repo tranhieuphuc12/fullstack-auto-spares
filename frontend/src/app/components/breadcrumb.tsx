@@ -86,7 +86,7 @@ export default function Breadcrumbs({ className }: BreadcrumbsProps) {
   if (breadcrumbs.length === 0) return null;
 
   return (
-    <ol className={`flex items-center whitespace-nowrap my-5${className ? ` ${className}` : ''}`}>
+    <ol className={`flex items-center whitespace-nowrap my-5 ${className ? ` ${className}` : ''}`}>
       {breadcrumbs.map((item, index) => {
         const isLast = index === breadcrumbs.length - 1;
 
