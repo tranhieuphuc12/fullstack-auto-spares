@@ -19,19 +19,14 @@ router.get('/products/brand/:brand', async (req, res) => {
 
 
   try {
-    //Find all carIds with the given brand
-    const carIds = await Car.find({ brand }).distinct('_id');
-
-    if (carIds.length === 0) {
-      return res.status(404).json({ error: 'No cars found for this brand' });
-    }
-
+    
+  
 
     // Find all products with the given carIds
-    const products = await Product.find({ carId: { $in: carIds.map(id => new mongoose.Types.ObjectId(id)) } })
-      .skip(skip)
-      .limit(limit);
-    const totalProducts = await Product.countDocuments({ carId: { $in: carIds } });
+    const products = await Product.find({ 'car.brand': brand }).skip(skip).limit(limit);
+
+    const totalProducts = await Product.countDocuments({ 'car._id': brand });
+
     if (products.length === 0) {
       return res.status(404).json({ error: 'No products found for this brand' });
     }
@@ -57,15 +52,16 @@ router.get('/products/categoryId/:categoryId', async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
   const skip = (page - 1) * limit;
-  const stock = 5;
+  
 
   if (!mongoose.Types.ObjectId.isValid(categoryId)) {
     return res.status(400).json({ error: 'Invalid category ID' });
   }
 
   try {
-    const products = await Product.find({ categoryId }).skip(skip).limit(limit);
-    const totalProducts = await Product.countDocuments({ categoryId });
+    // Find all products with the given categoryId
+    const products = await Product.find({ 'category._id': categoryId }).skip(skip).limit(limit);
+    const totalProducts = await Product.countDocuments({ 'category._id': categoryId });
 
     if (products.length === 0) {
       return res.status(404).json({ error: 'No products found for this category' });
@@ -108,14 +104,16 @@ router.get('/search', async (req, res) => {
       $or: [
         { name_normalized: { $regex: normalizedSearchTerm, $options: 'i' } },
         { description_normalized: { $regex: normalizedSearchTerm, $options: 'i' } },
-        { productId: { $regex: normalizedSearchTerm, $options: 'i' } }
+        { productId: { $regex: normalizedSearchTerm, $options: 'i' } },
+        { JSAsakashi: { $regex: normalizedSearchTerm, $options: 'i' } },
       ]
     }).skip(skip).limit(limit);
     const totalProducts = await Product.countDocuments({
       $or: [
         { name_normalized: { $regex: normalizedSearchTerm, $options: 'i' } },
         { description_normalized: { $regex: normalizedSearchTerm, $options: 'i' } },
-        { productId: { $regex: normalizedSearchTerm, $options: 'i' } }
+        { productId: { $regex: normalizedSearchTerm, $options: 'i' } },
+        { JSAsakashi: { $regex: normalizedSearchTerm, $options: 'i' } }
       ]
     });
 
@@ -171,7 +169,7 @@ router.get('/products/:id', async (req, res) => {
   try {
     const product = await Product.findOne({ _id: productId });
     if (!product) return res.status(404).json({ error: 'Product not found' });
-    const category = await Category.findOne({ _id: product.categoryId });
+    const category = await Category.findOne({ _id: product.category._id });
 
     res.json({
       product,
@@ -191,38 +189,56 @@ router.get('/products/:id', async (req, res) => {
 // POST a new product
 router.post('/products', async (req, res) => {
   try {
+
+
     const newProduct = new Product(req.body);
+    newProduct.name_normalized = normalize(newProduct.name);
+    newProduct.description_normalized = normalize(newProduct.description);
+    
+
     await newProduct.save();
     res.status(201).json(newProduct);
   } catch (err) {
+    console.error(err);
     res.status(400).json({ error: 'Failed to create product' });
   }
 });
-
-// PUT update product by ID
+// PUT update a product
 router.put('/products/:id', async (req, res) => {
+  const _id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(400).json({ error: 'Invalid product ID' });
+  }
   try {
-    const updatedProduct = await Product.findOneAndUpdate(
-      { id: req.params.id },
-      req.body,
-      { new: true }
-    );
-    if (!updatedProduct) return res.status(404).json({ error: 'Product not found' });
-    res.json(updatedProduct);
+    const updatedProduct = await Product.findByIdAndUpdate(_id, req.body, { new: true });
+    if (!updatedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.status(200).json(updatedProduct);
   } catch (err) {
+    console.error(err);
     res.status(400).json({ error: 'Failed to update product' });
   }
+  
 });
 
-// DELETE product by ID
+// DELETE a product
 router.delete('/products/:id', async (req, res) => {
+  const _id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(400).json({ error: 'Invalid product ID' });
+  }
   try {
-    const deleted = await Product.findOneAndDelete({ id: req.params.id });
-    if (!deleted) return res.status(404).json({ error: 'Product not found' });
-    res.json({ message: 'Product deleted' });
+    const deletedProduct = await Product.findByIdAndDelete(_id);
+    if (!deletedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.status(200).json({ message: 'Product deleted successfully' });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: 'Failed to delete product' });
   }
 });
+
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import GroupFixedButtons from "../components/GroupFixedButtons";
 
 const AboutUs = () => {
+    const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
     return (
         <>
             <section className="px-4 py-8 max-w-5xl mx-auto">
@@ -51,7 +52,7 @@ const AboutUs = () => {
                     </p>
 
                     <p className="text-emerald-600">
-                        Mọi thác mắc xin liên hệ: <strong>Hotline: 093 8118 937</strong>
+                        Mọi thác mắc xin liên hệ: <strong>Hotline: {phoneNumber}</strong>
                     </p>
 
                     <p className="text-emerald-600 font-semibold">

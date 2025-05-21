@@ -53,4 +53,26 @@ router.get('/brands/name/:name', async (req, res) => {
   }
 });
 
+// POST a new brand
+router.post('/brands', async (req, res) => {
+  const { name } = req.body;
+  const  type  = "oem";
+  const logo = "";
+  if (!name || !type) {
+    return res.status(400).json({ error: 'Brand name and type are required' });
+  }
+
+  try {
+    const newBrand = new Brand({ name,logo, type });
+    await newBrand.save();
+    res.status(201).json(newBrand);
+  } catch (err) {
+
+    res.status(500).json({ error: 'Failed to create brand' });
+    console.error(err);
+  } finally {
+    console.log('POST /brands');
+  }
+});
+
 module.exports = router;

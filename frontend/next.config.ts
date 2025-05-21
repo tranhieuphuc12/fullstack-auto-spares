@@ -1,9 +1,7 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
-    domains: ["img.daisyui.com","www.dpsauto.com.vn"], 
-  },
+    domains: ["img.daisyui.com", "www.dpsauto.com.vn","localhost"],
+  },  
 };
 
 export default nextConfig;

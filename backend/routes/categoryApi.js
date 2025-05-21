@@ -34,4 +34,23 @@ router.get('/categories/:id', async (req, res) => {
   }
 });
 
+//POST a new category
+router.post('/categories', async (req, res) => {
+  const { name } = req.body;
+
+  if (!name) {
+    return res.status(400).json({ error: 'Category name is required' });
+  }
+
+  try {
+    const newCategory = new Category({ name });
+    await newCategory.save();
+    res.status(201).json(newCategory);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to create category' });
+  } finally {
+    console.log('POST /categories');
+  }
+});
+
 module.exports = router;

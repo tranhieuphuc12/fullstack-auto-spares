@@ -14,7 +14,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
 
   const [product, setProduct] = useState<Product>()
   const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState<string | null>(null);
+  
   const [mainImage, setMainImage] = useState<string | null>();
   const apiBase = process.env.NEXT_PUBLIC_API_BASE;
 
@@ -22,15 +22,14 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(`${apiBase}/api/products/${id}`);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+        
         const data = await response.json();
         setProduct(data.product);
+        
         setMainImage(data.product.images[0]);
       } catch (error) {
         console.error("Error fetching product:", error);
-        // setError("Failed to load product" + error);
+        
       } finally {
         setLoading(false);
       }
@@ -88,7 +87,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
           <div>
             <div className="border border-gray-300 rounded-lg overflow-hidden p-2 mb-5">
               <Image
-                src={`/products/${mainImage}` || "/placeholder-image.png"}
+                src={`${mainImage}`}
                 alt="Product"
                 width={600}
                 height={400}
@@ -104,7 +103,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
 
           {/* Product Info */}
           <div className="space-y-3">
-            <h1 className="text-2xl font-semibold text-gray-800">{product?.name}</h1>
+            <h1 className="text-2xl font-semibold text-gray-800">{product?.name} {product?. productId} {product?.JSAsakashi} {product?.car.brand} {product?.car.model} {product?.car.year}</h1>
             <p className="text-gray-600">
               Tên sản phẩm: <strong>{product?.name}</strong>
             </p>
@@ -112,7 +111,16 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
               Mã sản phẩm: <strong>{product?.productId}</strong>
             </p>
             <p className="text-gray-600">
-              Thương hiệu: <strong>{product?.brand}</strong>
+              Mã JS Asakashi: <strong>{product?.JSAsakashi}</strong>
+            </p>
+            <p className="text-gray-600">
+              Loại phụ tùng: <strong>{product?.category.name}</strong>
+            </p>
+            <p className="text-gray-600">
+              Thương hiệu: <strong>{product?.brand.name}</strong>
+            </p>
+            <p className="text-gray-600">
+              Hãng xe: <strong>{product?.car.brand} {product?.car.model} {product?.car.year}</strong>
             </p>
             <p className="text-gray-600">
               Số lượng: <strong>{product?.stock}</strong>
@@ -120,6 +128,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
             <p className="text-lg text-red-600 font-bold">
               Giá: {product?.price ? new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price) : 'N/A'}
             </p>
+            
           </div>
         </div>
 
@@ -135,7 +144,7 @@ const ProductSlug = ({ params }: { params: Promise<{ id: string }> }) => {
             {product?.images?.map((image, index) => (
               <div key={index} className="mb-4">
                 <Image
-                  src={`/products/${image}` || "/placeholder-image.png"}
+                  src={`${image}` || "/placeholder-image.png"}
                   alt={`Product Image ${index + 1}`}
                   width={600}
                   height={400}

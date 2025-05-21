@@ -5,7 +5,7 @@ function normalize(str) {
 }
 
 const productSchema = new mongoose.Schema({
-  productId: { type: String, required: true },
+  productId: { type: Array, required: true },
   name: { type: String, required: true },
   name_normalized: { type: String, required: true },
   images: [{ type: String }],
@@ -13,9 +13,14 @@ const productSchema = new mongoose.Schema({
   stock: { type: Number, required: true },
   description: { type: String, required: true },
   description_normalized: { type: String, required: true },
-  brand: { type: String, required: true },
-  categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
-  carId: { type: mongoose.Schema.Types.ObjectId, ref: 'Car', required: true },
+  brand: { type: Object, required: true },
+  // categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
+  // carId: { type: mongoose.Schema.Types.ObjectId, ref: 'Car', required: true },
+  category: { type: Object, required: true },
+  car: { type: Object, required: true },
+  JSAsakashi: { type: String, required: true },
+  
+
 
 }, { timestamps: true });
 

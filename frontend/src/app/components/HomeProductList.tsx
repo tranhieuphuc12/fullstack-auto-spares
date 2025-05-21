@@ -3,8 +3,7 @@ import Category from '@/app/interfaces/ICategory';
 import ProductList from '@/app/components/ProductsList';
 
 const HomeProductList: React.FC = () => {
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [filteredCategories, setFilteredCategories] = useState<Category[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);    
     const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
     useEffect(() => {
@@ -25,9 +24,7 @@ const HomeProductList: React.FC = () => {
         fetchCategories();
     }, []);
     useEffect(() => {
-       // remove categoies with subcategories 
-        const filtered = categories.filter((category) => !category.subCategories || category.subCategories.length === 0);
-        setFilteredCategories(filtered);
+      
     }, [categories]);
 
 
@@ -35,7 +32,7 @@ const HomeProductList: React.FC = () => {
     return (
         <div>
             <ProductList API={`${API_BASE}/api/products?`} />
-            {filteredCategories.map((category) => (
+            {categories.map((category) => (
                 <ProductList key={category._id} API={`${API_BASE}/api/products/categoryId/${category._id}?`} title={category.name} />
 
             ))}

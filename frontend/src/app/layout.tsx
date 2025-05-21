@@ -44,7 +44,9 @@ export default function RootLayout({
 
 
       </body>
+      
       <PrelineScriptWrapper />
+      
     </html>
   );
 }
