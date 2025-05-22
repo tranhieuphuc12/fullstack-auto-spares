@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use('/api', [productApiRoutes, categoryApiRoutes, carApiRoutes, brandApiRoutes]);
 app.use('/api/admin', adminApiRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
-app.use('/api/upload', uploadRoutes);
+app.use('/api/uploads', uploadRoutes);
 
 // Connect to MongoDB
 if (!mongoUri) {
