@@ -20,7 +20,7 @@ const upload = multer({ storage });
 router.post("/", upload.array("images"), (req, res) => {
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://mvpauto.id.vn"
+      ? "http://backend:3000"
       : req.protocol + "://" + req.get("host");
 
   const urls = req.files.map((file) => `${baseUrl}/uploads/${file.filename}`);
