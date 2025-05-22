@@ -17,7 +17,7 @@ router.get('/products/brand/:brand', async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
   const skip = (page - 1) * limit;
-  const stock = 5;
+  
 
 
   try {
@@ -27,7 +27,7 @@ router.get('/products/brand/:brand', async (req, res) => {
     // Find all products with the given carIds
     const products = await Product.find({ 'car.brand': brand }).skip(skip).limit(limit);
 
-    const totalProducts = await Product.countDocuments({ 'car._id': brand });
+    const totalProducts = await Product.countDocuments({ 'car.brand': brand });
 
     if (products.length === 0) {
       return res.status(404).json({ error: 'No products found for this brand' });

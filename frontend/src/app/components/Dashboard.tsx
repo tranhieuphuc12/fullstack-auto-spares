@@ -15,36 +15,34 @@ const DashboardClient = () => {
 
 
     const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
-
-    useEffect(() => {
+    const fetchProducts = async () => {
         setLoading(true);
-        const debounceTimeout = setTimeout(() => {
-            const fetchProducts = async () => {
-                try {
-                    const response = await fetch(`${API_BASE}/api/products?page=${page}&limit=${itemsPerPage}`);;
-                    if (!response.ok) {
-                        const errorMessage = response.status === 404
-                            ? "Không tìm thấy sản phẩm nào"
-                            : `Lỗi: ${response.statusText}`;
-                        setError(errorMessage);
-                        return;
-                    }
+        try {
+            const response = await fetch(`${API_BASE}/api/products?page=${page}&limit=${itemsPerPage}`);;
+            if (!response.ok) {
+                const errorMessage = response.status === 404
+                    ? "Không tìm thấy sản phẩm nào"
+                    : `Lỗi: ${response.statusText}`;
+                setError(errorMessage);
+                return;
+            }
 
-                    const data = await response.json();
-                    // console.log("Fetched products:", data);
-                    setProducts(data.products);
-                    setTotalPages(data.totalPages);
-                    setTotalItems(data.totalItems);
-                } catch (error) {
-                    setError("Đã xảy ra lỗi khi tải sản phẩm");
-                    console.error("Error fetching products:", error);
-                } finally {
-                    setLoading(false);
-                }
-            };
+            const data = await response.json();
+            // console.log("Fetched products:", data);
+            setProducts(data.products);
+            setTotalPages(data.totalPages);
+            setTotalItems(data.totalItems);
+        } catch (error) {
+            setError("Đã xảy ra lỗi khi tải sản phẩm");
+            console.error("Error fetching products:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    useEffect(() => {
+        const debounceTimeout = setTimeout(() => {
             fetchProducts();
         }, 300);
-
         return () => clearTimeout(debounceTimeout);
     }, []);
 
@@ -92,42 +90,42 @@ const DashboardClient = () => {
                     </>
                 ) : (<>
 
-                    <AddProductModal />
+                    <AddProductModal onProductAdded={fetchProducts}/>
                     <div className="flex justify-between items-center mb-4">
                         <h1 className="text-2xl font-bold">Danh sách sản phẩm</h1>
-                    <button
-                        onClick={() => {
-                            setLoading(true);
-                            setError(null);
-                            // re-fetch products for current page
-                            const fetchProducts = async () => {
-                                try {
-                                    const response = await fetch(`${API_BASE}/api/products?page=${page}&limit=${itemsPerPage}`);
-                                    if (!response.ok) {
-                                        const errorMessage = response.status === 404
-                                            ? "Không tìm thấy sản phẩm nào"
-                                            : `Lỗi: ${response.statusText}`;
-                                        setError(errorMessage);
-                                        return;
+                        <button
+                            onClick={() => {
+                                setLoading(true);
+                                setError(null);
+                                // re-fetch products for current page
+                                const fetchProducts = async () => {
+                                    try {
+                                        const response = await fetch(`${API_BASE}/api/products?page=${page}&limit=${itemsPerPage}`);
+                                        if (!response.ok) {
+                                            const errorMessage = response.status === 404
+                                                ? "Không tìm thấy sản phẩm nào"
+                                                : `Lỗi: ${response.statusText}`;
+                                            setError(errorMessage);
+                                            return;
+                                        }
+                                        const data = await response.json();
+                                        setProducts(data.products);
+                                        setTotalPages(data.totalPages);
+                                        setTotalItems(data.totalItems);
+                                    } catch (error) {
+                                        setError("Đã xảy ra lỗi khi tải sản phẩm");
+                                        console.error("Error fetching products:", error);
+                                    } finally {
+                                        setLoading(false);
                                     }
-                                    const data = await response.json();
-                                    setProducts(data.products);
-                                    setTotalPages(data.totalPages);
-                                    setTotalItems(data.totalItems);
-                                } catch (error) {
-                                    setError("Đã xảy ra lỗi khi tải sản phẩm");
-                                    console.error("Error fetching products:", error);
-                                } finally {
-                                    setLoading(false);
-                                }
-                            };
-                            fetchProducts();
-                        }}
-                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                    >
-                        Tải lại
-                    </button>
-                    </div>  
+                                };
+                                fetchProducts();
+                            }}
+                            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        >
+                            Tải lại
+                        </button>
+                    </div>
 
                     <table className="w-full border-collapse">
                         <thead>
@@ -159,7 +157,7 @@ const DashboardClient = () => {
                                         <td className="border border-gray-300 p-2">{product.car.brand} {product.car.model}</td>
                                         <td className="border border-gray-300 p-2"> {product.car.year}</td>
                                         <td className="border border-gray-300 p-2">{product.name}</td>
-                                        <td className="border border-gray-300 p-2">{product.category.name}</td>                                       
+                                        <td className="border border-gray-300 p-2">{product.category.name}</td>
                                         <td className="border border-gray-300 p-2">
                                             {product.productId.map((id, idx) => (
                                                 <span key={idx} className="block">
@@ -200,7 +198,7 @@ const DashboardClient = () => {
                                             )}
                                         </td>
                                         <td className="border border-gray-300 p-2 justify-center flex flex-col items-center">
-                                            <EditProductModal product={product} />
+                                            <EditProductModal product={product} onProductEdited={fetchProducts}/>
 
 
                                             <button

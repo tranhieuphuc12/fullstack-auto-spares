@@ -7,9 +7,13 @@ import Car from "@/app/interfaces/ICar";
 import Brand from "@/app/interfaces/IBrand";
 import Product from "../interfaces/IProduct";
 
+interface EditProductModalProps {
+    onProductEdited: () => void;
+    product: Product;
+}
 
 
-const EditProductModal = ({ product }: { product: Product }) => {
+const EditProductModal = ({ product, onProductEdited }: EditProductModalProps) => {
     const [showAddCar, setShowAddCar] = useState(false);
     const [showAddCategory, setShowAddCategory] = useState(false);
     const [showAddBrand, setShowAddBrand] = useState(false)
@@ -288,6 +292,7 @@ const EditProductModal = ({ product }: { product: Product }) => {
             }
 
             alert("Sửa sản phẩm thành công!");
+            onProductEdited();
             setProductName("");
             setProductId("");
             setJSAsakashi("");
