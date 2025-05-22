@@ -506,14 +506,29 @@ const EditProductModal = ({ product }: { product: Product }) => {
 
 
                             <span className="px-4 py-2 ">Giá</span>
-                            <input type="number" className="w-full px-4 py-2 mb-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" placeholder="Giá sản phẩm"
-                                value={productPrice}
-                                onChange={(e) => setProductPrice(Number(e.target.value))}
+                            <input
+                                type="text"
+                                className="w-full px-4 py-2 mb-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                                placeholder="Giá sản phẩm"
+                                value={productPrice.toLocaleString("vi-VN")}
+                                onChange={(e) => {
+                                    const raw = e.target.value.replace(/[^\d]/g, "");
+                                    const value = Number(raw);
+                                    setProductPrice(isNaN(value) ? 0 : value);
+                                }}
+                                inputMode="numeric"
                             />
                             <span className="px-4 py-2 ">Số lượng</span>
-                            <input type="number" className="w-full px-4 py-2 mb-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" placeholder="Số lượng sản phẩm"
+                            <input
+                                type="number"
+                                min={0}
+                                className="w-full px-4 py-2 mb-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                                placeholder="Số lượng sản phẩm"
                                 value={productStock}
-                                onChange={(e) => setProductStock(Number(e.target.value))}
+                                onChange={(e) => {
+                                    const value = Math.max(0, Number(e.target.value));
+                                    setProductStock(isNaN(value) ? 0 : value);
+                                }}
                             />
 
                             <span className="px-4 py-2 ">Mô tả</span>
