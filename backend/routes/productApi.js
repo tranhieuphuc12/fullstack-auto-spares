@@ -4,6 +4,8 @@ const Product = require('../models/Product');
 const Category = require('../models/Category');
 const Car = require('../models/Car');
 const mongoose = require('mongoose');
+const fs = require('fs');
+const path = require('path');
 
 function normalize(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -19,8 +21,8 @@ router.get('/products/brand/:brand', async (req, res) => {
 
 
   try {
-    
-  
+
+
 
     // Find all products with the given carIds
     const products = await Product.find({ 'car.brand': brand }).skip(skip).limit(limit);
@@ -52,7 +54,7 @@ router.get('/products/categoryId/:categoryId', async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
   const skip = (page - 1) * limit;
-  
+
 
   if (!mongoose.Types.ObjectId.isValid(categoryId)) {
     return res.status(400).json({ error: 'Invalid category ID' });
@@ -194,7 +196,7 @@ router.post('/products', async (req, res) => {
     const newProduct = new Product(req.body);
     newProduct.name_normalized = normalize(newProduct.name);
     newProduct.description_normalized = normalize(newProduct.description);
-    
+
 
     await newProduct.save();
     res.status(201).json(newProduct);
@@ -210,6 +212,38 @@ router.put('/products/:id', async (req, res) => {
     return res.status(400).json({ error: 'Invalid product ID' });
   }
   try {
+    //remove deleted images from the request body
+    const existingProduct = await Product.findById(_id);
+    if (!existingProduct) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    const oldImages = existingProduct.images || [];
+    const newImages = req.body.images || [];
+
+    // Determine which images have been removed
+    const deletedImages = oldImages.filter((oldImg) => !newImages.includes(oldImg));
+
+    // Remove deleted image files
+    deletedImages.forEach((url) => {
+      try {
+        const filename = url.split("/uploads/")[1];
+        if (!filename) return;
+
+        const imagePath = path.join(__dirname, "..", "public", "uploads", filename);
+        fs.unlink(imagePath, (err) => {
+          if (err && err.code !== "ENOENT") {
+            console.error(`❌ Failed to delete ${imagePath}`, err);
+          } else {
+            console.log(`🗑️ Deleted image file: ${imagePath}`);
+          }
+        });
+      } catch (err) {
+        console.error("❌ Failed to process image URL:", url, err);
+      }
+    });
+
+
+
     const updatedProduct = await Product.findByIdAndUpdate(_id, req.body, { new: true });
     if (!updatedProduct) {
       return res.status(404).json({ error: 'Product not found' });
@@ -219,7 +253,7 @@ router.put('/products/:id', async (req, res) => {
     console.error(err);
     res.status(400).json({ error: 'Failed to update product' });
   }
-  
+
 });
 
 // DELETE a product
@@ -229,10 +263,37 @@ router.delete('/products/:id', async (req, res) => {
     return res.status(400).json({ error: 'Invalid product ID' });
   }
   try {
+    const product = await Product.findById(_id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    // Remove image files from uploads folder
+    if (Array.isArray(product.images)) {
+      product.images.forEach((url) => {
+        try {
+          // Extract filename from URL
+          const filename = url.split('/uploads/')[1]; // safe even if full URL
+          const imagePath = path.join(__dirname, '..', 'public', 'uploads', filename);
+
+          fs.unlink(imagePath, (err) => {
+            if (err && err.code !== 'ENOENT') {
+              console.error(`❌ Failed to delete ${imagePath}`, err);
+            } else {
+              console.log(`🗑️ Deleted file: ${imagePath}`);
+            }
+          });
+        } catch (err) {
+          console.error('❌ Error processing image URL:', url, err);
+        }
+      });
+    }
+
     const deletedProduct = await Product.findByIdAndDelete(_id);
     if (!deletedProduct) {
       return res.status(404).json({ error: 'Product not found' });
     }
+
+
     res.status(200).json({ message: 'Product deleted successfully' });
   } catch (err) {
     console.error(err);
