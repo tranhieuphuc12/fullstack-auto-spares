@@ -18,9 +18,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.post("/", upload.array("images"), (req, res) => {
-  const host = req.protocol + "://" + req.get("host"); // e.g. http://localhost:3000
-  const urls = req.files.map((file) => `${host}/uploads/${file.filename}`);
-  res.status(200).json({ urls }); // 🔁 send back the public image URLs
+  const baseUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://mvpauto.id.vn"
+      : req.protocol + "://" + req.get("host");
+
+  const urls = req.files.map((file) => `${baseUrl}/uploads/${file.filename}`);
+  res.status(200).json({ urls });
 });
 
 module.exports = router;
